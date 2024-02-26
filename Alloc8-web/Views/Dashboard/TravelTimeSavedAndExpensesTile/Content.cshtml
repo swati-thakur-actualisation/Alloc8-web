@@ -1,0 +1,41 @@
+﻿@model List<Alloc8_web.ViewModels.Dashboard.TravelTimeSavedAndExpensesViewModel>
+<div style="width:100%;">
+    <div class="table-responsive" style="height:290px; overflow-y: auto;">
+
+        <table class="table text-center table-hover mb-0">
+            <thead class="thead-light" style="position: sticky; top: 0; z-index: 1;">
+                <tr>
+                    <th class="border-top-0">Month</th>
+                    <th class="border-top-0">Travel Time Saved</th>
+                    <th class="border-top-0">Expenses Saved</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count > 0)
+                {
+                    @foreach (var data in Model)
+                    {
+                        <tr>
+                            <td>@data.month</td>
+                            <td>
+                                @(data.travelTimeSaved > 1 ? data.travelTimeSaved + " hours" : data.travelTimeSaved + " hour")
+                            </td>
+
+                            <td>$@data.expensesSaved</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" style="text-align:center">No record found!</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <p>This tile shows data which is not accurate and is for display purpose only</p>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+﻿@model Alloc8_web.Utilities.PagedResult<Alloc8_web.ViewModels.User.UserViewModel>
+@inject Alloc8_web.Services.User.IAuth auth;
+<div  class="table-responsive" data-table>
+    <input type="hidden" id="pageNumber" value="@Model.pageNumber" />
+    <table class="table table-hover mb-0" id="my-table">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+            @{
+                int counter = ((Model.pageSize*(Model.pageNumber-1))+1);
+            }
+            @foreach (var user in Model?.data)
+            {
+            <tr>
+                <td>@counter</td>
+                <td>@user.firstName</td>
+                <td>@user.lastName</td>
+                <td>@user.email</td>
+                    <td>
+                @if (@user.role == "Admin")
+                {
+                    <span class="badge badge-boxed  badge-danger">@user.role</span>
+                }
+                else if (@user.role == "Manager")
+                {
+                   <span class="badge badge-boxed  badge-success">@user.role</span>
+                }
+                else if (@user.role == "User")
+                {
+                    <span class="badge badge-boxed  badge-warning">@user.role</span>
+                }
+                </td>
+                <td>
+                    @if(user.active){
+                            <span class="badge badge-boxed  badge-success">Active</span>
+                    }
+                    else{
+                            <span class="badge badge-boxed  badge-danger"> Inactive</span>
+                    }
+                       
+                    </td>
+                <td>
+                    @if (auth.hasPermission("users","edit"))
+                    {
+                            <a href="javascript:" class="userTable-edit-button btn btn-sm btn-success" style="float: none; margin: 4px;" data-modal="user_edit" data-url="/User/Edit?id=@user.userId"><span class="mdi mdi-square-edit-outline"></span></a>
+
+                    }
+                    @if (auth.hasPermission("users", "remove"))
+                    {
+                            <button type="button" class="userTable-delete-button btn btn-sm btn-danger" data-modal="do_delete_user" data-url="/User/DoDelete?id=@user.userId" style="float: none; margin: 4px;"><span class="ti-trash"></span></button>
+                    }
+                        @if (User.IsInRole(Alloc8_web.Utilities.WebSiteRoles.Website_Admin) ||User.IsInRole(Alloc8_web.Utilities.WebSiteRoles.Website_Manager))
+                        {
+                        //  <button type="button" class="userTable-delete-button btn btn-sm btn-default" data-modal="do_delete_user" data-url="/User/DoDelete?id=@user.userId" style="float: none; margin: 4px;"><span class="fas fa-ellipsis-v"></span></button>
+                            <div class="btn-group mb-2 mb-md-0">
+                                <button type="button" class="btn btn-soft-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-v"></span></button>
+                                <div class="dropdown-menu">
+                                    <button class="dropdown-item" data-modal="do_login_as" data-url="/User/DoLoginAs?id=@user.userId">Log in as</button>
+
+                                </div>
+                            </div>
+
+
+                        }
+                </td>
+            </tr>
+            counter++;
+        }
+    </tbody>
+
+</table>
+    @if (Model.totalPages > 1)
+    {
+        <nav class="float-right" id="pagination-container">
+            <ul class="pagination">
+                @for (int i = 1; i <= Model.totalPages; i++)
+                {
+                    <li class="page-item @(Model.pageNumber == i ? "active" : "")">
+                        <a class="page-link" href="javascript:" data-url="/User/GetUsersTable?pageNumber=@i">@i <span class="sr-only">(current)</span></a>
+                    </li>
+                }
+
+            </ul><!--end pagination-->
+        </nav>
+    }
+    
+</div>
+<script>
+    $(document).ready(function () {
+        window['user_create_modal_callback'] = function user_create_modal_callback() {
+            var filter = { search: $("#searchInput").val(), pageNumber: $('#pageNumber').val() }
+            tables.refresh("users_table_container", "/User/GetUsersTable");
+        }
+        // user_edit
+        window['user_edit_modal_callback'] = function user_edit_modal_callback() {
+            var search = $("#searchInput").val();
+            var filter = { search: search, pageNumber: @Html.Raw(Model.pageNumber) }
+            tables.refresh("users_table_container", "/User/GetUsersTable", filter);
+        }
+        window['do_delete_user_modal_callback'] = function do_delete_user_modal_callback() {
+            var search = $("#searchInput").val();
+            var filter = { search: search, pageNumber: @Html.Raw(Model.pageNumber) }
+            tables.refresh("users_table_container", "/User/GetUsersTable");
+        }
+        window['do_login_as_modal_callback'] = function do_loginAs_user_modal_callback() {
+            window.location.href = '/Home/Index';
+        }
+    });
+
+    
+</script>

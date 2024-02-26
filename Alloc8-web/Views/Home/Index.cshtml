@@ -1,0 +1,103 @@
+﻿@using Alloc8.ef.Entities.Dashboard;
+@using Alloc8_web.Utilities;
+@using Alloc8_web.Models;
+@using Alloc8_web.Services.User;
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<ApplicationUser> UserManager
+@inject IUserService userService
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var userOrgId = user?.orginationId;
+    var organizations = await userService.GetAllOrganizations();
+    var userOrg = organizations.FirstOrDefault(o => o.Id == userOrgId);
+    ViewBag.userOrgName = userOrg != null ? userOrg.organizationName : null;
+}
+
+@model List<Alloc8_web.Utilities.Tile>
+
+<div class="container-fluid">
+    <div class="row col-12">
+        @foreach (var tile in Model)
+        {
+            if (tile.show)
+            {
+                @Html.Partial($"~/Views/Dashboard/{tile.name}/Index.cshtml", tile)
+            }
+            @* @if (User.IsInRole(ActualisationDashboard.Utilities.WebSiteRoles.Website_Admin))
+            {
+                if(tile.organisation == 0){
+                    if (tile.show)
+                    {
+                        @Html.Partial($"~/Views/Dashboard/{tile.name}/Index.cshtml", tile)
+                    }
+                }
+                else
+                {
+                    @Html.Partial($"~/Views/Dashboard/{tile.name}/Index.cshtml", tile)
+
+                }
+
+            }
+            else
+            {
+                @Html.Partial($"~/Views/Dashboard/{tile.name}/Index.cshtml", tile)
+
+            } *@
+
+        }
+    </div><!--end row-->
+</div><!-- container -->
+<script src="~/assets/plugins/apexcharts/apexcharts.min.js"></script>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            if ($("#predicted_drivers_table").length) {
+                $("#recentLoginTileDiv").removeClass("col-lg-8").addClass("col-lg-4");
+            } else {
+                $("#recentLoginTileDiv").removeClass("col-lg-4").addClass("col-lg-8");
+            }
+
+            $(document).ready(function () {
+                var isActualisationUser = '@Html.Raw(User.Identity.Name)'.includes('actualisation.ai');
+                var clientNameMap = {
+                    '3': 'Reali Supply',
+                    '4': 'AH Fencing',
+                    '5': 'Tony Stephens Refrigeration',
+                    '6': 'Brooke\'s  Blooms',
+                    '7': 'Firefly Lighting',
+                    '8': 'Spanner Plumbing',
+                    '9': 'Moonyah Workforce',
+                    '10': 'MouldMen'
+                };
+
+                function updateBreadcrumb(organisationName) {
+                    var breadcrumbHtml = '<li class="breadcrumb-item"><a href="/Home/Index">Dashboard</a> </li><li class="breadcrumb-item active">' + organisationName + ' Dashboard</li>';
+
+                    $('.breadcrumb').html(breadcrumbHtml);
+                }
+
+                function checkAndUpdateBreadcrumbFromURL() {
+                    var currentURL = window.location.href;
+                    var clientIDPattern = /Home\/Index\?client=(\d+)/; // Regex to extract client ID
+
+                    if (clientIDPattern.test(currentURL)) {
+                        var clientId = currentURL.match(clientIDPattern)[1];
+
+                        if (clientNameMap[clientId]) {
+                            updateBreadcrumb(clientNameMap[clientId]);
+                        }
+                    }
+                }
+                checkAndUpdateBreadcrumbFromURL();
+            });
+
+        });
+    </script>
+    }
+
+
+
+
+
+

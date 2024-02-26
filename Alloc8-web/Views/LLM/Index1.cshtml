@@ -1,0 +1,109 @@
+﻿@inject Alloc8_web.Services.User.IAuth Auth;
+<style>
+    .main_container {
+        filter: blur(4px);
+        position: relative;
+        z-index: 0; 
+    }
+
+    .watermark-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.7; 
+        font-size: 2em;
+        color: #fff; 
+    }
+</style>
+@if (Auth.user().email.Contains("@ahfencing.com.au") || Auth.user().email.Contains("@spannerplumbing.com.au"))
+{
+    <div class="watermark-container">
+        Coming Soon...
+    </div>
+}
+else
+{
+    <div class="watermark-container">
+        <center>
+            Upgrade<br>
+            <p style="color:white;">To query your data lake, speak to Actualisation Group to upgrade your services.</p>
+        </center>
+    </div>
+}
+<div class="main_container" style="height:550px;">
+    
+    <div class="sidebar" id="toggleButton">
+        <div class="new_chat" id="chat_btn" style="border:1px solid; border-radius:5px;">
+            <button class="chat_btn" style="border: none;">+ New Chat</button>
+            <button class="collaps_btn" style="border: none;">
+                <i class="fas fa-edit"></i>
+            </button>
+
+        </div>
+
+        <div class="history_chats">
+            <div class="saved-chats">
+            </div>
+        </div>
+
+        <button onclick="updateButtonState()" class="close_btn"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="content_section">
+        <div class="menu_icon">
+            <button class="mobile-nav-bar">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat outgoing">
+                <div class="chat-content">
+                    <div class="chat-details">
+                        <img src="/Images/1.jpg" alt="user_image">
+                        <p>what is the Actualisation Group's last order?</p>
+                    </div>
+                </div>
+            </div><div class="chat incoming">
+                <div class="chat-contant">
+                    <div class="chat-details">
+                        <img src="/Images/log.jpg" alt="">
+
+                        <p>I'm sorry, but as an AI, I don't have access to personal data about individuals or companies unless it has been shared with me in the course of our conversation. I am designed to respect user privacy and confidentiality. Therefore, I'm unable to provide the information you're looking for.</p><span class="material-icons copy">content_copy</span>
+                    </div>
+
+
+                </div>
+            </div><div class="chat outgoing">
+                <div class="chat-content">
+                    <div class="chat-details">
+                        <img src="/Images/1.jpg" alt="user_image">
+                        <p>what are the current trends?</p>
+                    </div>
+                </div>
+            </div><div class="chat incoming">
+                <div class="chat-contant">
+                    <div class="chat-details">
+                        <img src="/Images/log.jpg" alt="">
+
+                        <p>As an AI, I would need more context to provide accurate information. Current trends can refer to many fields such as fashion, technology, business, finance, healthcare, etc. Could you please specify the area of interest?</p><span class="material-icons copy">content_copy</span>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="typing-container">
+            <div class="typing-content">
+                <div class="typing-textarea">
+                    <textarea id="chat-input" placeholder="Enter a Prompt Here " required=""></textarea>
+                    <span id="send-btn" class="material-icons">send</span>
+                    <input type="hidden" value="old" id="chatId">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

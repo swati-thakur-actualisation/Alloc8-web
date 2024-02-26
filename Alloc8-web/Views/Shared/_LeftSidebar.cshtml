@@ -1,0 +1,126 @@
+﻿@using Alloc8.ef.Entities.Dashboard;
+@using Alloc8_web.Utilities;
+@using Alloc8_web.Models;
+@using Alloc8_web.Services.User;
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<ApplicationUser> UserManager
+@inject IUserService userService
+@inject IAuth auth; 
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var userOrgId = user?.orginationId;
+    var organizations = await userService.GetAllOrganizations();
+}
+
+<div class="left-sidenav">
+
+    <ul class="metismenu left-sidenav-menu" id="side-nav">
+
+        @if (auth.hasPermission("dashboard","view"))
+        {
+            if (User.IsInRole(Alloc8_web.Utilities.WebSiteRoles.Website_Admin) || User.Identity.Name.Contains("@actualisation.ai") )
+            {
+                // Admin users see a dropdown with all organizations
+             @*    <li>
+                    <a href="#" aria-expanded="false">
+                        <i class="mdi mdi-monitor"></i>
+                        <span>Dashboards</span>
+                        <span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false" id="organizationDropdown">
+                        @foreach (var org in organizations)
+                        {
+                            <li><a href="/Home/Index?client=@org.Id" class="organizationDropdownLink">@org.organizationName</a></li>
+
+                        }
+                    </ul>
+                </li> *@
+
+                <li>
+                    <a href="/Home/Index">
+                        <i class="mdi mdi-monitor"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+            }
+            else if (userOrgId.HasValue)
+            {
+                // Non-admin users see only their associated organization
+                var userOrg = organizations.FirstOrDefault(o => o.Id == userOrgId);
+                if (userOrg != null)
+                {
+                    <li>
+                        <a href="/Home/Index?client=@userOrg.Id">
+                            <i class="mdi mdi-office-building"></i>
+                            <span>@userOrg.organizationName</span>
+                        </a>
+                    </li>
+                }
+            }
+        }
+
+        @if (auth.hasPermission("users","view"))
+        {
+
+            @if (!User.IsInRole(Alloc8_web.Utilities.WebSiteRoles.Website_User))
+            {
+                <li id="menu-user">
+                    <a href="/User/Index">
+                        <i class="dripicons-user"></i>
+                        <span>User</span>
+                    </a>
+                </li>
+            }
+        }
+
+        @if (User.IsInRole(Alloc8_web.Utilities.WebSiteRoles.Website_Admin) )
+        {
+            <li id="menu-Organisation">
+                <a href="/Organisation/Index">
+                    <i class="mdi mdi-office-building"></i>
+                    <span>Organisation</span>
+                </a>
+            </li>
+        }
+
+        @if (auth.hasPermission("chatgpt","view"))
+        {
+            if (User.IsInRole(Alloc8_web.Utilities.WebSiteRoles.Website_Admin) || User.Identity.Name.Contains("@actualisation.ai") || User.Identity.Name.Contains("@alloc8.io"))
+            {
+                <li id="menu-ChatGpt">
+                    <a href="/LLM/Index">
+                        <i class="mdi mdi-chat"></i>
+                        <span>LLM</span>
+                    </a>
+                </li>
+            }
+            else if (userOrgId.HasValue)
+            {
+                // Non-admin users see only their associated organization
+                var userOrg = organizations.FirstOrDefault(o => o.Id == userOrgId);
+                if (userOrg != null)
+                {
+                    <li id="menu-ChatGpt">
+                        <a href="/LLM/Index1">
+                            <i class="mdi mdi-chat"></i>
+                            <span>LLM</span>
+                        </a>
+                    </li>
+                }
+            }
+
+        }
+      @*   @if (User.IsInRole(Alloc8_web.Utilities.WebSiteRoles.Website_Admin))
+        {
+            <li id="menu-Organisation">
+                <a href="/EmailTemplate/index">
+                    <i class="far fa-envelope"></i>
+                    <span>Email Template</span>
+                </a>
+            </li>
+        } *@
+
+    </ul>
+
+</div>

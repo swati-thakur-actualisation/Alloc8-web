@@ -1,0 +1,68 @@
+﻿@using System.Security.Claims;
+@{
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+}
+ @inject Alloc8_web.Services.User.IAuth auth
+<div class="page-wrapper-img">
+    <div class="page-wrapper-img-inner">
+        <div class="sidebar-user media">
+            @if (string.IsNullOrEmpty(auth.user()?.profileImage))
+            {
+                <div id="top_botton_profile">
+                    <div class="avatar-box thumb-lg align-self-center mr-2">
+                        <span class="avatar-title bg-danger rounded-circle">@auth.user().firstName[0]@auth.user().lastName[0]</span>
+                    </div>
+                </div>
+                @* <img src="~/images/1.jpg" alt="user" class="rounded-circle img-thumbnail mb-1 user_profile_image"> *@
+            }
+            else
+            {
+                <div id="top_botton_profile">
+                    <img src="@auth.user()?.profileImage" loading="lazy" alt="user" class="rounded-circle img-thumbnail mb-1 user_profile_image" style="border-radius: 50%; width: 65px; height: 65px; object-fit: cover;">
+                </div>
+            }
+
+            <div class="media-body align-item-center">
+                <h5>@auth.user()?.fullName</h5>
+                <ul class="list-unstyled list-inline mb-0 mt-2">
+                    <li class="list-inline-item">
+                        @if (@auth.user()?.roleName == "Admin")
+                        {
+                            <span class="badge badge-boxed badge-danger">@auth.user()?.roleName</span>
+                        }
+                        @if (@auth.user()?.roleName == "Manager")
+                        {
+                            <span class="badge badge-boxed  badge-success">@auth.user()?.roleName</span>
+                        }
+                        @if (@auth.user()?.roleName == "User")
+                        {
+                            <span class=" badge badge-boxed badge-warning">@auth.user()?.roleName</span>
+                        }
+
+                        @* <a href="javascript:" data-modal="user_profile" data-url="/User/Profile?id=@userId"><i class="mdi mdi-account"></i></a> *@
+                    </li>
+                    @* <li class="list-inline-item">
+                    <a href="/Account/Logout" class=""><i class="mdi mdi-power"></i></a>
+                    </li> *@
+                </ul>
+            </div>
+        </div>
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                   
+                    <h4 class="page-title mb-2"><i class="mdi mdi-monitor mr-2"></i>Dashboard</h4>
+                    <div class="">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Actualisation</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Dashboard 1</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page title end breadcrumb -->
+    </div>
+</div>

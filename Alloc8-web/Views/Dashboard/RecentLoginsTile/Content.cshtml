@@ -1,0 +1,55 @@
+﻿@model List<Alloc8_web.ViewModels.Dashboard.RecentLoginsTileViewModel>
+@inject Alloc8_web.Utilities.Formatter.Formatter Formatter;
+<div class="w-100 table-responsive" style="height:300px;overflow-y: auto;">
+
+    <table class="table table-hover mb-0 text-center">
+        <thead class="thead-light" style="position: sticky; top: 0; z-index: 1;">
+                <tr>
+                    <th class="border-top-0">Email</th>
+                    <th class="border-top-0">Time</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.Count > 0)
+            {
+                    <tr>
+                        <td>johnstone@ramuddengroup.com</td>
+                        <td>22-Feb-2024 18:31:07</td>
+                    </tr>
+                    <tr>
+                        <td>jackiemeldrum@ramuddengroup.com</td>
+                        <td>22-Feb-2024 13:31:07</td>
+                    </tr>
+                    <tr>
+                        <td>priyaponnappa@ramuddengroup.com</td>
+                        <td>21-Feb-2024 22:31:07</td>
+                    </tr>
+                    <tr>
+                        <td>tamzynfrench@ramuddengroup.com</td>
+                        <td>21-Feb-2024 14:31:07</td>
+                    </tr>
+                  
+            }
+            else
+            {
+                <tr>
+                    <td>johnstone@ramuddengroup.com</td>
+                    <td>22-Feb-2024 18:31:07</td>
+                </tr>
+                <tr>
+                    <td>jackiemeldrum@ramuddengroup.com</td>
+                    <td>22-Feb-2024 13:31:07</td>
+                </tr>
+                <tr>
+                    <td>priyaponnappa@ramuddengroup.com</td>
+                    <td>21-Feb-2024 22:31:07</td>
+                </tr>
+                <tr>
+                    <td>tamzynfrench@ramuddengroup.com</td>
+                    <td>21-Feb-2024 14:31:07</td>
+                </tr>
+            }
+                
+            </tbody>
+        </table> 
+</div>

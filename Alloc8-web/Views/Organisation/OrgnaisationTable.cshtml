@@ -1,0 +1,45 @@
+﻿@inject Alloc8_web.Utilities.Formatter.Formatter Formatter;
+@model List<Alloc8.ef.Entities.Dashboard.Organisation>
+<div class="table-responsive" data-table>
+
+    <table class="table table-hover mb-0" id="my-table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Organisation Name</th>
+                <th>Created By</th>
+                <th>Added on</th>
+                <th></th>
+            </tr>
+        </thead>
+        @if (Model != null)
+        {
+            <tbody>
+                @{
+                    int counter = 1;
+                }
+                @foreach (var organisation in Model)
+                {
+                    <tr>
+                        <td>@counter</td>
+                        <td><span style="padding:5px;border:1px solid @organisation.borderColor;color:@organisation.color;background-color:@organisation.backgroundColor;border-radius:4px">@organisation.organizationName</span></td>
+                        <td>@organisation.user?.Email</td>
+                        <td>@Formatter.time.human(organisation.lastUpdated)</td>
+                        @if (User.IsInRole(Alloc8_web.Utilities.WebSiteRoles.Website_Admin))
+                        {
+                            <td>
+                                <a href="javascript:" class="userTable-edit-button btn btn-sm btn-success" style="float: none; margin: 4px;" data-modal="edit_organisation" data-url="/Organisation/Edit?id=@organisation.Id"><span class="mdi mdi-square-edit-outline"></span></a>
+                                <button type="button" class="userTable-delete-button btn btn-sm btn-danger" data-modal="do_delete_organisation" data-url="/Organisation/DoDelete?id=@organisation.Id" style="float: none; margin: 4px;"><span class="ti-trash"></span></button>
+                            </td>
+                        }
+                    </tr>
+                    counter++;
+                }
+            </tbody>
+        }
+
+    </table>
+
+
+</div>
+

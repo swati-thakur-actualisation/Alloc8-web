@@ -1,0 +1,43 @@
+﻿@model List<Alloc8.ef.Entities.Dashboard.Organisation>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body new-organisation order-list">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a href="javascript:" class="btn btn-success float-right btn-sm mb-3" data-url="/organisation/Create" data-modal="organisation_create" role="button"><span class="fas fa-user-plus"></span></a>
+                    }
+                    <h4 class="header-title mt-0 mb-3">Organisation</h4>
+                </div>
+                <div id="organisation_table_container" data-table>
+                    @Html.Partial("OrgnaisationTable")
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        @section Scripts {
+            <script>
+                $(document).ready(function () {
+                    console.log('check now');
+                    // organisation_create
+                    window['organisation_create_modal_callback'] = function organisation_create_modal_callback() {
+                        console.log("in callback")
+                        tables.refresh("organisation_table_container", "/Organisation/OrgnaisationTable");
+                    }
+                    window['edit_organisation_modal_callback'] = function edit_organisation_modal_callback() {
+                        console.log("in callback")
+                        tables.refresh("organisation_table_container", "/Organisation/OrgnaisationTable");
+                    }
+                    // organisation_edit
+                    window['do_delete_organisation_modal_callback'] = function do_delete_organisation_modal_callback() {
+                        console.log("in callback")
+                        tables.refresh("organisation_table_container", "/Organisation/OrgnaisationTable");
+                    }
+                    // organisation_delete
+                   
+
+                });
+            </script>
+        }

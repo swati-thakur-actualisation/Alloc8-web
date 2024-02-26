@@ -1,0 +1,34 @@
+﻿@model List<Alloc8_web.ViewModels.Dashboard.ExceptionsViewModel>
+<div style="width:100%;">
+    <div class="table-responsive" style="height:300px;overflow-y: auto;">
+        <table class="table table-hover mb-0 text-center">
+            <thead class="thead-light" style="position: sticky; top: 0; z-index: 1;">
+            <tr>
+                    <th class="border-top-0">Task</th>
+                <th class="border-top-0">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count > 0)
+            {
+                @foreach (var data in Model)
+                {
+                    <tr>
+                        <td>@data.title</td>
+                        <td><span class="badge badge-boxed badge-danger" style="cursor:pointer">@data.action</span></td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="2" style="text-align:center">No record found!</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+    <div style="margin-top: 30px; text-align: center;">
+        <p>This tile shows data which is not accurate and is for display purpose only</p>
+    </div>
+</div>

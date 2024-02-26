@@ -1,0 +1,12 @@
+D:\Alloc\Alloc8-web\Alloc8-web\Azure.API\bin\Release\net7.0\Azure.API.deps.json
+D:\Alloc\Alloc8-web\Alloc8-web\Azure.API\bin\Release\net7.0\Azure.API.dll
+D:\Alloc\Alloc8-web\Alloc8-web\Azure.API\bin\Release\net7.0\Azure.API.pdb
+D:\Alloc\Alloc8-web\Alloc8-web\Azure.API\obj\Release\net7.0\Azure.API.csproj.AssemblyReference.cache
+D:\Alloc\Alloc8-web\Alloc8-web\Azure.API\obj\Release\net7.0\Azure.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\Alloc\Alloc8-web\Alloc8-web\Azure.API\obj\Release\net7.0\Azure.API.AssemblyInfoInputs.cache
+D:\Alloc\Alloc8-web\Alloc8-web\Azure.API\obj\Release\net7.0\Azure.API.AssemblyInfo.cs
+D:\Alloc\Alloc8-web\Alloc8-web\Azure.API\obj\Release\net7.0\Azure.API.csproj.CoreCompileInputs.cache
+D:\Alloc\Alloc8-web\Alloc8-web\Azure.API\obj\Release\net7.0\Azure.API.dll
+D:\Alloc\Alloc8-web\Alloc8-web\Azure.API\obj\Release\net7.0\refint\Azure.API.dll
+D:\Alloc\Alloc8-web\Alloc8-web\Azure.API\obj\Release\net7.0\Azure.API.pdb
+D:\Alloc\Alloc8-web\Alloc8-web\Azure.API\obj\Release\net7.0\ref\Azure.API.dll

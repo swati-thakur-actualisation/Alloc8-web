@@ -1,0 +1,240 @@
+﻿@using Alloc8_web.Utilities;
+@model Alloc8_web.ViewModels.User.UserViewModel;
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/views/shared/_Modal.cshtml";
+    ViewData["Title"] = "Profile";
+    var Timezones = Helper.Timezones();
+}
+ @inject Alloc8_web.Services.User.IAuth auth
+ <style>
+    .avatar-box {
+        position: relative;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Adjust the background color and opacity as needed */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .avatar-box:hover .overlay {
+        opacity: 1;
+    }
+ </style>
+ <section>
+   
+    <div class="container py-4" id="profileContainer">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                    <div class="card-body text-center" style="display: flex;flex-direction: column;align-items: center;">
+                        <div class="rounded-circle img-fluid" style="width: 150px;height:150px" id="profile-image-container">
+                        @if (string.IsNullOrEmpty(Model.profilePicture))
+                        {
+                            <div id="profile_pic">
+                                <div class="avatar-box align-self-center profilePicUpload" for="imageInput" >
+                                    <span class="avatar-title bg-danger rounded-circle img-thumbnail" style="font-size: 50px">@auth.user().firstName[0]@auth.user().lastName[0]</span>
+                                    <div class="overlay rounded-circle">
+                                        <i class="fas fa-camera" style="font-size:30px;color:white"></i>
+                                    </div>
+                                </div>
+                                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                            </div>
+                        }
+                        else
+                        {
+                                <div id="profile_pic">
+                                    <div class="avatar-box align-self-center profilePicUpload rounded-circle" for="imageInput" style="background-image:url(@Model.profilePicture);">
+                                        <span class="" style="font-size: 50px"></span>
+                                        <div class="overlay rounded-circle">
+                                            <i class="fas fa-camera" style="font-size:30px;color:white"></i>
+                                        </div>
+                                    </div>
+                                    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                                </div>
+                                @* <div id="profile_pic">
+                                    <div class="avatar-box align-self-center profilePicUpload"  for="imageInput" style="width: 150px; height: 150px; cursor: pointer">
+                                    <label for="imageInput" style="cursor: pointer;">
+                                        <img src="@Model.profilePicture" alt="user" id="profile-picture"
+                                                class="rounded-circle img-fluid" style="width: 150px;height:150px">
+                                    </label>
+                                        <div class="overlay rounded-circle">
+                                            <i class="fas fa-camera" style="font-size:30px;color:white"></i>
+                                        </div>
+                                    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                                    </div>
+                                </div> *@
+                        }
+                        </div>
+                        <h5>@Model.firstName @Model.lastName</h5>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">First Name</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">@Model.firstName</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Last Name</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">@Model.lastName</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Email</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">@Model.email</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Role</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">@Model.role</p>
+                                </div>
+                            </div>
+                        @if (User.IsInRole(Alloc8_web.Utilities.WebSiteRoles.Website_User))
+                        {
+                            <hr>
+                            <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Managers</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">@Model.managers</p>
+                            </div>
+                        </div>
+                        }
+                             <hr />    
+                            <div class="row">
+                            <div class="col-sm-3">
+                            <p class="mb-0">Timezone</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <select class="form-control form-control-sm" id="Timezone" name="Timezone" onchange="updateTimezone(this.value)">
+                                    <option value="-1">Select Timezone</option>
+
+                                    @if (Timezones != null && Timezones.Any())
+                                    {
+                                        foreach (var _timezone in Timezones)
+                                        {
+                                            if (!string.IsNullOrEmpty(Model.timezone) && Model.timezone == _timezone.TimeZoneId)
+                                            {
+                                                <option value="@_timezone.TimeZoneId" selected>@_timezone.TimeZoneDisplayName</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@_timezone.TimeZoneId">@_timezone.TimeZoneDisplayName</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script>
+    function updateTimezone(selectedTimezone) {
+        if (selectedTimezone !== "-1") {
+            $.ajax({
+                url: '/User/UpdateTimezone',
+                type: 'POST',
+                data: {
+                    timezone: selectedTimezone,
+                    userId: '@Model.userId'
+                },
+                beforeSend: function () {
+                    loader.add($("#profileContainer"))
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                complete: function () {
+                    loader.remove($("#profileContainer"))
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+    }
+    $("#profile_pic").on("click", ".profilePicUpload", function () {
+        $("#imageInput").click();
+
+    });
+
+    // picUpload
+    // $("#picUpload").click(function () {
+    //     $("#imageInput").click();
+    // });
+    $(document).ready(function () {
+        $('button.btn-success[data-submit="modal"]').hide();
+        $('button.btn-danger[data-dismiss="modal"]').hide();
+        $('#profile_pic ').on('change', '#imageInput', function (e) {
+            var fileInput = e.target;
+            var file = fileInput.files[0];
+            console.log(file);
+            if (file) {
+                var formData = new FormData();
+                formData.append('profileImage', file);
+                $.ajax({
+                    url: '/User/uploadProfileImage',
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        loader.add($("#profile-image-container"))
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        // Handle the success response, if needed
+                        $('#header_profile').html(`<img src="${data.profileImageUrl}" alt="profile-user" class="rounded-circle user_profile_image" />`)
+                        $('#top_botton_profile').html(`<img src="${data.profileImageUrl}" loading="lazy"  alt="user" class="rounded-circle img-thumbnail mb-1 user_profile_image">`)
+                        $('#profile_pic').html(`<div class="avatar-box align-self-center profilePicUpload rounded-circle" for="imageInput" style="background-image:url(${data.profileImageUrl}"><span class="" style="font-size:50px"></span><div class="overlay rounded-circle"><i class="fas fa-camera" style="font-size:30px;color:#fff"></i></div></div><input type="file" id="imageInput" accept="image/*" style="display:none">`)
+                        
+                        // $('#profile-picture').attr('src', data.profileImageUrl);
+                        // $('.user_profile_image').attr('src', data.profileImageUrl);
+                    },
+                    complete:function(){
+                        loader.remove($("#profile-image-container"))
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle the error, if needed
+                        console.error('Error uploading image:', status, error);
+                    }
+                });
+            }
+        });
+    });
+</script>

@@ -1,0 +1,86 @@
+﻿@model Alloc8_web.Utilities.PagedResult<Alloc8_web.ViewModels.User.UserViewModel>;
+<div class="container-fluid">
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+                <div class="card-body new-user order-list">
+                     @if (User.HasClaim(c => c.Type == "permission" && c.Value == "users_edit")) {
+                            <a href="javascript:" class="btn btn-success float-right btn-sm mb-3" data-url="/User/Create" data-modal="user_create" role="button"><span class="fas fa-user-plus"></span></a>
+                        }
+                    <h4 class="header-title mt-0 mb-3">Users</h4>
+                    <div class="hide-phone app-search">
+                        <form role="search" id="searchForm">
+                            <input type="text" placeholder="Search..." id="searchInput" class="form-control">
+                            <a href=""><i class="fas fa-search"></i></a>
+                        </form>
+                    </div>
+                    <div id="users_table_container"   data-table>
+                        @Html.Partial("GetUsersTable")
+                    </div>
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div> <!-- end col -->
+</div> <!-- end row -->
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#searchForm').on('submit', function (e) {
+                e.preventDefault(); // Prevent the default form submission
+                const searchValue = $("#searchInput").val().trim();
+                debounceAjaxCall(searchValue);
+            });
+
+            // Attach an event listener to the search button
+            $('#searchButton').on('click', function (e) {
+                e.preventDefault();
+                const searchValue = $("#searchInput").val().trim();
+                debounceAjaxCall(searchValue);
+            });
+
+            $('#users_table_container').on('click', '.page-link', function (e) {
+                e.preventDefault();
+                // Get the clicked page number
+                var url = $(this).data('url');
+                var search = $("#searchInput").val();
+                var filter = {search:search}
+                console.log(filter)
+                tables.get("users_table_container", url, filter);
+            });
+            function debounce(func, wait, immediate) {
+                let timeout;
+                return function () {
+                    const context = this;
+                    const args = arguments;
+                    const later = function () {
+                        timeout = null;
+                        if (!immediate) func.apply(context, args);
+                    };
+                    const callNow = immediate && !timeout;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                    if (callNow) func.apply(context, args);
+                };
+            }
+
+            // Your AJAX call function
+            function makeAjaxCall(searchValue) {
+                tables.get("users_table_container", "/User/GetUsersTable", { search: searchValue });
+            }
+
+            // Use debounce to delay the AJAX call while typing
+            const debounceAjaxCall = debounce(function (searchValue) {
+                makeAjaxCall(searchValue);
+            }, 300); // Adjust the debounce delay as needed (e.g., 300 milliseconds)
+
+            // Attach an event listener to the search input
+            $('#searchInput').on('input', function () {
+                const searchValue = $(this).val().trim();
+
+                // Cancel previous AJAX call if there is one
+                debounceAjaxCall(searchValue);
+            });
+               
+        });
+    </script>
+}

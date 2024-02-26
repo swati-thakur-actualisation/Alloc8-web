@@ -1,0 +1,136 @@
+﻿@model Alloc8_web.ViewModels.Dashboard.ServiceLogsTileViewModel;
+@{
+    ViewBag.Title = "Service Logs";
+    Layout = "~/views/shared/_ConsoleModal.cshtml";
+    ViewData["Title"] = "Add User";
+}
+
+<div class="console-content">
+    <div class="console-line">
+        <p class="text-yellow"></p>
+    </div>
+    <div class="console-line">
+        <p class="success-text"></p>
+    </div>
+    <div class="console-line">
+        <p class="text-green"></p>
+    </div>
+    <div class="console-line">
+        <p class="text-green"></p>
+    </div>
+    
+    @if (Model.serviceStatus == "Running")
+    {
+        <div class="console-line">
+            <p class="success-text"></p>
+        </div>
+    }
+    else if (Model.serviceStatus == "Aborted")
+    {
+        <div class="console-line">
+            <p class="text-yellow"></p>
+        </div>
+    }
+    else
+    {
+        <div class="console-line">
+            <p class="text-red"></p>
+        </div>
+    }
+        @if (Model.serviceStatus == "Running")
+    {
+        <div class="console-line">
+            <p class="success-text"></p>
+        </div>
+    }
+    else if (Model.serviceStatus == "Aborted")
+    {
+        <div class="console-line">
+            <p class="text-yellow"></p>
+        </div>
+    }
+    else 
+    {
+        <div class="console-line">
+            <p class="text-red"></p>
+        </div>
+    }
+    
+    <div class="console-line blink">
+        <p class="text-green"></p>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        let lines = [];
+        @Html.Raw("const serviceStatus = '" + Model.serviceStatus + "';")
+            switch (serviceStatus) {
+            case "Failed":
+                lines = [
+                    "Note* This tile shows data which is not accurate and is for display purpose only",
+                    "[@Model.serviceName] Service Started At @Model.dateStarted UTC +10",
+                    "Data Sync Has Been Started",
+                    "Fetching Items and saving in database",
+                    "Error occurred while saving Data in Database > Unable to Establish trusted database connection",
+                    "Service status changed from Running to Failed"
+
+                ];
+                break;
+   
+            case "Running":
+                lines = [
+                    "Note* This tile shows data which is not accurate and is for display purpose only",
+                    "[@Model.serviceName] Service Started At @Model.dateStarted UTC +10",
+                    "Data Sync Has Been Started",
+                    "Fetching Items and saving in database",
+                    "New Row inserted in Database Row Id - [@Html.Raw(Guid.NewGuid().ToString())]",
+                    "New Row inserted in Database Row Id - [@Html.Raw(Guid.NewGuid().ToString())]",
+                    "$",
+                ];
+                break;
+            case  "Aborted":
+                lines = [
+                    "Note* This tile shows data which is not accurate and is for display purpose only",
+                    "[@Model.serviceName] Service Started At @Model.dateStarted UTC +10",
+                    "Data Sync Has Been Started",
+                    "Fetching Items and saving in database",
+                    "Service has been Aborted by user",
+                    "Service status changed from Running to Aborted",
+                    "$",
+                ];
+                break;
+        }
+    
+    
+        let lineIndex = 0;
+        let charIndex = 0;
+        let interval;
+
+        function typeWriter() {
+            if (lineIndex < lines.length) {
+                const currentLine = lines[lineIndex];
+                const element = document.querySelectorAll('.console-line p')[lineIndex];
+
+                if (charIndex < currentLine.length) {
+                    element.textContent += currentLine[charIndex];
+                    charIndex++;
+                } else {
+                    lineIndex++;
+                    charIndex = 0;
+                }
+            } else {
+                clearInterval(interval);
+            }
+        }
+
+        // Adjust the speed of typing by changing the interval duration (in milliseconds)
+        interval = setInterval(typeWriter, 12);
+        $('.status-indicator.status-red.close').on('click', function () {
+            clearInterval(interval);
+            // Optionally, you may want to clear the content as well
+            $('.console-line p').empty();
+        });
+    });
+    
+</script>

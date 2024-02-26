@@ -1,0 +1,44 @@
+﻿<div class="modal-3 @RenderSection("modal_class", false)" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border:none;background-color: #181b2e;">
+                <h4 class="modal-title">@RenderSection("title", false)</h4>
+                @if (IsSectionDefined("actionButtons"))
+                {
+                    @RenderSection("actionButtons")
+                }
+                else
+                {
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                }
+                
+            </div>
+            <div class="modal-body" style="background-color: #181b2e;">
+                @RenderBody()
+            </div>
+            <div>
+                @if (IsSectionDefined("warning"))
+                {
+                    @RenderSection("warning")
+                }
+            </div>
+            <div class="modal-footer" style="border:none;background-color: #181b2e;">
+                <div class="buttons">
+                    @if (IsSectionDefined("buttons"))
+                    {
+                        @RenderSection("buttons")
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-success btn-sm mr-1" data-submit="modal">Save</button>
+                        <button type="button" class="btn btn-save-next" style="display:none;">Save & Next</button>
+                        <button type="button" class="btn btn-danger btn-sm mr-1" data-dismiss="modal">Cancel</button>
+                    }
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->    
+@RenderSection("scripts", required: false)

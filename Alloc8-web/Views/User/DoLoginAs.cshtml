@@ -1,0 +1,25 @@
+﻿@model Alloc8_web.ViewModels.User.UserLoginAsViewModel;
+@{
+    ViewBag.Title = "Login As";
+    Layout = "~/views/shared/_Modal.cshtml";
+    ViewData["Title"] = "Login As";
+}
+<div class="container">
+    <form action="/Account/LoginAs" method="POST">
+        <div class="test_form">
+            <h3 style="
+             position: absolute;
+             top: -40px;
+             left: 30px;">
+                Login As
+            </h3>
+            <h5>Are you sure you want to login as @Model.email ?</h5>
+            <input type="hidden" name="userId" value="@Model.userId" />
+        </div>
+
+    </form>
+</div>
+@section buttons{
+    <button type="submit" class="btn btn-success btn-sm mr-1" data-submit="modal">Confirm</button>
+    <button type="button" class="btn btn-danger btn-sm mr-1" data-dismiss="modal">Cancel</button>
+}

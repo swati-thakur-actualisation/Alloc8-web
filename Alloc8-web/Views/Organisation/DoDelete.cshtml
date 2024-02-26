@@ -1,0 +1,16 @@
+﻿@model Alloc8_web.ViewModels.Organisation.OrganisationEditViewModel;
+@{
+    ViewBag.Title = "Delete Organisation";
+    Layout = "~/views/shared/_Modal.cshtml";
+    ViewData["Title"] = "Delete Organisation";
+}
+<div class="container">
+    <form action="/Organisation/Delete" method="POST">
+        <h5>Are you sure you want to delete @Model.organisationName</h5>
+        <input type="hidden" name="id" value="@Model.id" />
+    </form>
+</div>
+@section buttons{
+    <button type="button" class="btn btn-success btn-sm mr-1" data-submit="modal">Delete</button>
+    <button type="button" class="btn btn-danger btn-sm mr-1" data-dismiss="modal">Cancel</button>
+}

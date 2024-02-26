@@ -1,0 +1,155 @@
+﻿<div class="apexchart-wrapper" id="data_log_graph_container" style="width:100%;">
+    <div id="data_log_graph" class="apex-charts"></div>
+</div>
+<script>
+    const dataLogOptions = {
+        chart: {
+            type: "area",
+            stacked: false,
+            height: 380,
+            zoom: {
+                enabled: false
+            }
+        },
+        plotOptions: {
+            line: {
+                curve: "smooth"
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [3]
+        },
+        series: [
+            {
+                name: "",
+                data: []
+            }
+        ],
+        markers: {
+            size: 0,
+            style: "full"
+        },
+        colors: ["#32CD32"],
+        title: {
+            text: "",
+            align: "left"
+        },
+        grid: {
+            row: {
+                colors: ["transparent", "transparent"],
+                opacity: 0.2
+            },
+            borderColor: "#f1f3fa"
+        },
+        fill: {
+            gradient: {
+                enabled: true,
+                shadeIntensity: 1,
+                inverseColors: false,
+                opacityFrom: 0.5,
+                opacityTo: 0.1,
+                stops: [0, 70, 80, 100]
+            }
+        },
+        yaxis: [
+            {
+                show: true,
+                showAlways: false,
+                opposite: false,
+                logarithmic: false,
+                forceNiceScale: true,
+                max: 4000000,
+                min: 50000,
+                floating: false,
+                decimalsInFloat: 2,
+                axisBorder: {
+                },
+                axisTicks: {
+                },
+                title: {
+                },
+                tooltip: {
+                },
+                crosshairs: {
+                },
+                labels: {
+                    formatter: function (value) {
+                        return value.toLocaleString() + ' KB';
+                    }
+                }
+            }
+        ],
+        xaxis: {
+            type: "datetime"
+        },
+        tooltip: {
+            shared: false,
+            theme: "dark",
+            y: {}
+        },
+        responsive: [
+            {
+                breakpoint: 600,
+                options: {
+                    chart: {
+                        toolbar: {
+                            show: false
+                        }
+                    },
+                    legend: {
+                        show: false
+                    }
+                }
+            }
+        ],
+        annotations: {
+            yaxis: [],
+            xaxis: [],
+            points: []
+        }
+    };
+    $(document).ready(function () {
+        $.ajax({
+            url: "/Dashboard/getDataLogs?organisation=@Model.organisation",
+            type: "GET",
+            dataType: "json",
+            beforeSend: function () {
+                loader.add($("#data_log_graph_container"))
+            },
+            success: function (data) {
+                
+                // Update the result div with the received data
+                dataLogOptions.series[0].name = ['Database Logs'];
+                dataLogOptions.series[0].data = [['2024-02-24T10:37:46.523Z', '463336'],
+                ['2024-02-24T05:18:21.673Z', '463291'],
+                ['2024-02-23T14:13:29.186Z', '463290'],
+                ['2024-01-23T08:54:04.336Z', '463390'],
+                ['2024-01-20T17:49:11.849Z', '385494'],
+                ['2024-01-10T12:29:47.000Z', '385400'],
+                ['2024-01-06T21:24:54.513Z', '385300'],
+                ['2024-01-02T16:05:29.663Z', '385211'],
+                ['2023-12-20T00:00:00.000Z', '385200'],
+                ['2023-12-10T11:51:18.763Z', '385110'],
+                ['2023-10-10T11:17:24.850Z', '385100']];
+                dataLogOptions.yaxis[0].max = 463339;
+                dataLogOptions.yaxis[0].min = 385494;
+                var dataLogChart = new ApexCharts(
+                    document.querySelector("#data_log_graph"),
+                    dataLogOptions
+                );
+                dataLogChart.render();
+            },
+            error: function (error) {
+                loader.remove($("#data_log_graph_container"))
+                console.error("Error occurred: " + error.statusText);
+            },
+            complete: function () {
+                loader.remove($("#data_log_graph_container"))
+            }
+        });
+    });
+        
+</script>

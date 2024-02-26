@@ -1,0 +1,62 @@
+﻿@model Alloc8_web.Utilities.Tile
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body mb-0">
+            <div class="row">
+                <div class="col-6 align-self-center">
+                    <div class="">
+                        <h4 class="mt-2 header-title">@Model.title</h4>
+                    </div>
+                </div><!--end col-->
+                <div class="col-6 align-self-center">
+                    @if (Model.show)
+                    {
+                        @* <h5 class="mt-2" style="text-align:right;padding:0px 40px 0px 0px">Active</h5> *@
+                        <a href="javascript:" class="btn btn-success float-right btn-sm mb-3" data-url="/Dashboard/activeTile" data-modal="algorithms_active" role="button">Active</a>
+
+                    }
+                    else
+                    {
+                       @*  <h5 class="mt-2" style="text-align:right;padding:0px 40px 0px 0px">Upgrade</h5> *@
+                        <a href="javascript:" class="btn btn-primary float-right btn-sm" data-url="/Dashboard/upgradeTile" data-modal="algorithms_upgrade" role="button">Upgrade</a>
+
+                    }
+                </div>
+
+            </div><!--end row-->
+        </div><!--end card-body-->
+       @*  <div class="card-body overflow-hidden p-0" style="height:330px">
+            <div class="d-flex mb-0 dash-info-box p-3 justify-content-center align-items-center" style="height: 100%;">
+                <div class="d-flex flex-column align-items-center text-center" style="width:100%">
+                    <h2 class="font-weight-light">Upgrade</h2>
+                    <h4 class="font-weight-light">Speak to Actualisation Group to upgrade your services</h4>
+                </div>
+            </div>
+
+        </div><!--end card-body--> *@
+    </div><!--end card-->
+</div><!--end col-->
+<script>
+    $(document).ready(function () {
+
+        // $.ajax({
+        //     url: "/Dashboard/GetRecentLogins?organisation=@Model.organisation",
+        //     type: "GET",
+        //     dataType: "html",
+        //     beforeSend: function () {
+        //         loader.add($("#recentLogins"))
+        //     },
+        //     success: function (data) {
+        //         // Update the result div with the received data
+        //         $("#recentLogins").html(data);
+        //     },
+        //     error: function (error) {
+        //         loader.remove($("#recentLogins"))
+        //         console.error("Error occurred: " + error.statusText);
+        //     },
+        //     complete: function () {
+        //         loader.remove($("#recentLogins"))
+        //     }
+        // });
+    });
+</script>

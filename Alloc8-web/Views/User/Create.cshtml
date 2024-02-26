@@ -1,0 +1,282 @@
+﻿@using Alloc8_web.Utilities;
+@model Alloc8_web.ViewModels.User.UserOrganisationAndManager;
+@{
+    ViewBag.Title = "Add User";
+    Layout = "~/views/shared/_Modal.cshtml";
+    ViewData["Title"] = "Add User";
+    var Timezones = Helper.Timezones();
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="general_settings_tab" data-toggle="pill" href="#general_settings" aria-selected="true">General</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="permissions_tab" data-toggle="pill" href="#permissions" aria-selected="false">Permissions</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-12">
+            <form action="/User/Create" method="POST" class="needs-validation" id="userCreateForm" novalidate>
+                <div class="tab-content chat-list slimscroll" id="pills-tabContent">
+
+                    <div class="tab-pane fade show active" id="general_settings">
+
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom01">First name</label>
+                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name" required>
+
+                            </div><!--end col-->
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom02">Last name</label>
+                                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last name" required>
+
+                            </div><!--end col-->
+
+                        </div><!--end form-row-->
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom03">Email</label>
+                                <input type="email" class="form-control" value="" name="email" id="email" placeholder="Enter Email" required>
+
+                            </div><!--end col-->
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom04">Role</label>
+                                <select class="form-control" name="role">
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <option>Admin</option>
+                                    }
+                                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                                    {
+                                        <option>Manager</option>
+                                    }
+                                    <option>User</option>
+                                </select>
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom05">Password</label>
+                                <input type="password" name="password" class="form-control" id="password" value="" placeholder="Enter Password" required autocomplete="new-password">
+
+                            </div><!--end col-->
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom05">Re-Enter Password</label>
+                                <input type="password" name="reEnteredPassword" class="form-control" id="reEnteredPassword" placeholder="Re-Enter Password" required autocomplete="new-password">
+
+                            </div><!--end col-->
+
+                        </div><!--end form-row-->
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label>Select Managers</label>
+                                <button type="button" class="form-control d-flex justify-content-between align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <label></label>  <i class="mdi mdi-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <input type="text" class="form-control dropdown-search" placeholder="Search...">
+                                    @if (Model != null && Model.allManagers.data.Count() > 0)
+                                    {
+                                        @foreach (var manager in Model.allManagers.data)
+                                        {
+                                            <label class="dropdown-item">
+                                                <input type="checkbox" class="dropdown-checkbox" name="managers" value="@manager.userId"> @manager.email
+                                            </label>
+                                        }
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Select Organisation</label>
+                                <select name="orginationId" class="form-control">
+                                    <option></option>
+                                    @if (Model != null && Model.organisations.Count() > 0 && Model.organisations.Any())
+                                    {
+                                        @foreach (var organisation in Model.organisations)
+                                        {
+                                            <option value="@organisation.Id">@organisation.organizationName</option>
+
+                                        }
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label>Select Timezone</label>
+                                <select class="form-control form-control-sm" id="Timezone" name="Timezone">
+                                    <option value="-1">Select Timezone</option>
+
+                                    @if (Timezones != null && Timezones.Any())
+                                    {
+                                        foreach (var _timezone in Timezones)
+                                        {
+                                            <option value="@_timezone.TimeZoneId">@_timezone.TimeZoneDisplayName</option>
+                                        }
+                                    }
+                               </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="checkbox ">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="isActive" id="customCheck02" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                    <label class="custom-control-label" for="customCheck02">Active</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="permissions">
+                        <div class="row">
+                            <div class="col-sm-6"></div>
+                            <div class="col-sm-2"><strong>View</strong></div>
+                            <div class="col-sm-2"><strong>Edit</strong></div>
+                            <div class="col-sm-2"><strong>Remove</strong></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">Dashboard</div>
+                            <div class="col-sm-2">
+                                <div class="checkbox my-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="hidden" name="permissions[0].name" value="dashboard">
+                                        <input type="checkbox" name="permissions[0].view" class="custom-control-input" id="dashboard_view" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                        <label class="custom-control-label" for="dashboard_view"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="checkbox my-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="permissions[0].edit" class="custom-control-input" id="dashboard_edit" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                        <label class="custom-control-label" for="dashboard_edit"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="checkbox my-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="permissions[0].remove" class="custom-control-input" id="dashboard_remove" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                        <label class="custom-control-label" for="dashboard_remove"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">Users</div>
+                            <div class="col-sm-2">
+                                <div class="checkbox my-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="hidden" name="permissions[1].name" value="users">
+                                        <input type="checkbox" name="permissions[1].view" class="custom-control-input" id="users_view" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                        <label class="custom-control-label" for="users_view"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="checkbox my-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="permissions[1].edit" class="custom-control-input" id="users_edit" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                        <label class="custom-control-label" for="users_edit"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="checkbox my-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="permissions[1].remove" class="custom-control-input" id="users_remove" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                        <label class="custom-control-label" for="users_remove"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">Chat GPT</div>
+                            <div class="col-sm-2">
+                                <div class="checkbox my-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="hidden" name="permissions[2].name" value="chatgpt">
+                                        <input type="checkbox" name="permissions[2].view" class="custom-control-input" id="chatgpt_view" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                        <label class="custom-control-label" for="chatgpt_view"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="checkbox my-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="permissions[2].edit" class="custom-control-input" id="chatgpt_edit" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                        <label class="custom-control-label" for="chatgpt_edit"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="checkbox my-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="permissions[2].remove" class="custom-control-input" id="chatgpt_remove" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                        <label class="custom-control-label" for="chatgpt_remove"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">Apps</div>
+                            <div class="col-sm-2">
+                                <div class="checkbox my-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="hidden" name="permissions[3].name" value="apps">
+                                        <input type="checkbox" name="permissions[3].view" class="custom-control-input" id="apps_view" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                        <label class="custom-control-label" for="apps_view"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="checkbox my-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="permissions[3].edit" class="custom-control-input" id="apps_edit" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                        <label class="custom-control-label" for="apps_edit"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="checkbox my-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="permissions[3].remove" class="custom-control-input" id="apps_remove" value="true" data-parsley-multiple="groups" data-parsley-mincheck="2">
+                                        <label class="custom-control-label" for="apps_remove"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+
+    <script>
+        $(document).ready(function () {
+            // Prevent dropdown from closing when interacting with input or checkbox
+            $('.dropdown-menu input').on('click', function (e) {
+                e.stopPropagation();
+            });
+
+            // Search functionality
+            $('.dropdown-search').on('keyup', function () {
+                var searchTerm = $(this).val().toLowerCase();
+                $('.dropdown-menu a').each(function () {
+                    var text = $(this).text().toLowerCase();
+                    $(this).toggle(text.indexOf(searchTerm) > -1);
+                });
+            });
+        });
+
+    </script>
+}

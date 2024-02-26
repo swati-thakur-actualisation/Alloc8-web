@@ -1,0 +1,37 @@
+﻿@model List<Alloc8_web.ViewModels.EmailTemplate.EmailTemplateViewModel>
+
+<div class="table-responsive" data-table>
+    <table class="table table-hover mb-0" id="my-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Last Updated By</th>
+                <th>Last Updated At</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var template in Model)
+            {
+                <tr>
+                    <td>@template.name</td>
+                    <td>@template.title</td>
+                    <td>@template.lastUpdatedBy</td>
+                    <td>@template.lastIpdatedAt</td>
+                    <td>
+                        <a href="javascript:" class="btn btn-success float-right btn-sm mb-3" data-url="/EmailTemplate/edit?templateId=@template.id" data-modal="edit_email_template" role="button"><span class="far fa-edit"></span></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function(){
+        window['edit_email_template_modal_callback'] = function edit_email_template_modal_callback() {
+            var filter = { search: "", pageNumber: "" }
+        tables.refresh("email_template_table_container", "/EmailTemplate/table");
+        }
+    });
+</script>

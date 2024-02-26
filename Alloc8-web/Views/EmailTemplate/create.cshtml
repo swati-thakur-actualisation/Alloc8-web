@@ -1,0 +1,71 @@
+﻿@model Alloc8_web.ViewModels.EmailTemplate.EmailTemplateViewModel
+
+@{
+    ViewBag.Title = "Add User";
+    Layout = "~/views/shared/_Modal.cshtml";
+    ViewData["Title"] = "Add User";
+}
+<style>
+    #mceu_41-body{
+        display:none !important;
+    }
+</style>
+<form action="/EmailTemplate/create" method="POST" >
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom01">Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="name" required />
+
+        </div><!--end col-->
+        <div class="col-md-6 mb-3">
+            <label for="validationCustom02">Title</label>
+            <input type="text" class="form-control" name="title" id="title" placeholder="Title" required />
+
+        </div><!--end col-->
+
+    </div><!--end form-row-->
+    <div class="form-row">
+        <div class="col-md-12 mb-3">
+            <label for="validationCustom02">Notes</label>
+            <textarea id="elm1" name="notes"></textarea>
+        </div><!--end col-->
+    </div>
+
+</form>
+
+
+
+   <script>
+        $(document).ready(function () {
+       
+            if ($("#elm1").length > 0) {
+                tinymce.init({
+                    selector: "textarea#elm1",
+                    theme: "modern",
+                    height: 300,
+                    plugins: [
+                        "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                        "save table contextmenu directionality emoticons template paste textcolor"
+                    ],
+                    toolbar: " undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor emoticons | link",
+                    style_formats: [
+                        { title: 'Bold text', inline: 'b' },
+                        { title: 'Red text', inline: 'span', styles: { color: '#ff0000' } },
+                        { title: 'Red header', block: 'h1', styles: { color: '#ff0000' } },
+                        { title: 'Example 1', inline: 'span', classes: 'example1' },
+                        { title: 'Example 2', inline: 'span', classes: 'example2' },
+                        { title: 'Table styles' },
+                        { title: 'Table row 1', selector: 'tr', classes: 'tablerow1' }
+                    ],
+                setup: function (editor) {
+                    // Add an event listener for the change event
+                    editor.on('change', function () {
+                        // Get the content and set it to the hidden input field
+                        $("#elm1").val(editor.getContent());
+                    });
+                }
+                });
+            }
+        });
+   </script>

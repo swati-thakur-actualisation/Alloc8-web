@@ -1,0 +1,113 @@
+﻿@using System.Security.Claims;
+@{
+    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+}
+ @inject Alloc8_web.Services.User.IAuth auth
+<div class="topbar">
+    <!-- Navbar -->
+    <nav class="navbar-custom">
+        <ul class="list-unstyled topbar-nav mb-0">
+
+            <li>
+                <button class="button-menu-mobile nav-link waves-effect waves-light">
+                    <i class="mdi mdi-menu nav-icon"></i>
+                </button>
+            </li>
+
+            @*  <li class="hide-phone app-search">
+            <form role="search" class="">
+            <input type="text" placeholder="Search..." class="form-control">
+            <a href=""><i class="fas fa-search"></i></a>
+            </form>
+            </li> *@
+
+        </ul>
+        <!-- LOGO -->
+        <div class="topbar-left">
+            <a href="~/Home/Index" class="logo">
+
+                <span>
+                    <img src="~/images/logo_light.png" alt="logo-large" style="height:30px;" class="logo-lg">
+                </span>
+            </a>
+        </div>
+      
+        <ul class="list-unstyled topbar-nav float-right mb-0">
+
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="false" aria-expanded="false">
+                    <i class="mdi mdi-bell-outline nav-icon"></i>
+                    <span class="badge badge-danger badge-pill noti-icon-badge">2</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+                    <!-- item-->
+                    <h6 class="dropdown-item-text">
+                        Notifications (258)
+                    </h6>
+                    <div class="slimscroll notification-list">
+                        <!-- item-->
+                        <a href="javascript:" class="dropdown-item notify-item" data-modal="notifcation" data-url="/Home/getNotificationDetails" >
+                            <div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
+                            <p class="notify-details">New Message received<small class="text-muted">Coaching Sent 13-12-2023 12:23:45</small></p>
+                        </a>
+                        <!-- item-->
+                        <a href="javascript:" class="dropdown-item notify-item" data-modal="notifcation" data-url="/Home/getNotificationDetails">
+                            <div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
+                            <p class="notify-details">New Message received<small class="text-muted">Coaching Sent 13-12-2023 12:23:45</small></p>
+                        </a>
+                        <!-- item-->
+                        <a href="javascript:" class="dropdown-item notify-item" data-modal="notifcation" data-url="/Home/getNotificationDetails">
+                            <div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
+                            <p class="notify-details">New Message received<small class="text-muted">Coaching Sent 13-12-2023 12:23:45</small></p>
+                        </a>
+                        <!-- item-->
+                        <a href="javascript:" class="dropdown-item notify-item" data-modal="notifcation" data-url="/Home/getNotificationDetails">
+                            <div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
+                            <p class="notify-details">New Message received<small class="text-muted">Coaching Sent 13-12-2023 12:23:45</small></p>
+                        </a>
+                        <!-- item-->
+                        <a href="javascript:" class="dropdown-item notify-item" data-modal="notifcation" data-url="/Home/getNotificationDetails">
+                            <div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
+                            <p class="notify-details">New Message received<small class="text-muted">Coaching Sent 13-12-2023 12:23:45</small></p>
+                        </a>
+                    </div>
+                    <!-- All-->
+                    <a href="javascript:" class="dropdown-item text-center text-primary" data-modal="Notifications" data-url="/Home/notificationsTab">
+                        View all <i class="fi-arrow-right"></i>
+                    </a>
+                </div>
+            </li>
+
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="false" aria-expanded="false">
+                    @if (string.IsNullOrEmpty(auth.user()?.profileImage))
+                    {
+                        <div id="header_profile">
+                            <div class="avatar-box thumb-xs align-self-center">
+                                <span class="avatar-title bg-danger rounded-circle">@auth.user().firstName[0]@auth.user().lastName[0]</span>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {   <div id="header_profile">
+                            <img src="@auth.user()?.profileImage" alt="profile-user" class="rounded-circle user_profile_image" />
+                        </div>
+                    }
+                    <span class="ml-1 nav-user-name hidden-sm"> <i class="mdi mdi-chevron-down"></i> </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+
+                    <a href="javascript:" class="dropdown-item" data-modal="user_profile" data-url="/User/Profile?id=@userId" role="button"><i class="dripicons-user text-muted mr-2"></i> Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/Account/Logout"><i class="dripicons-exit text-muted mr-2"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+
+      
+
+    </nav>
+    <!-- end navbar-->
+</div>

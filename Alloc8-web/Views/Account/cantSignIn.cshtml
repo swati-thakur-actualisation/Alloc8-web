@@ -1,0 +1,101 @@
+﻿@model Alloc8_web.ViewModels.Account.ForgotPasswordViewModel;
+@{
+    ViewBag.Title = "Can't Sign In";
+    Layout = "~/views/shared/_Login.cshtml";
+    ViewData["Title"] = "Can't Sign In";
+}
+<style>
+    .email_check_password_link {
+        padding: 10px 10px 10px 10px;
+        color: green;
+        display:none;
+    }
+
+    .email_check_password_link_error {
+        padding: 10px 10px 10px 10px;
+        color: #ff2400;
+        display:none;
+    }
+</style>
+<div class="login-page">
+    <div class="logo-container">
+       @*  <img class="logo"
+             src="~/images/ActualisationLogo.png"
+             alt="Logo">
+        <h4 style="font-weight:500">Creating time and space</h4> *@
+    </div>
+    @* <div class="swert_alet">
+        <div class="message">
+            Check it in the center of this div.
+        </div>
+    </div> *@
+    <div class="login-container " >
+        <div class="login-form">
+            <div class="logo">
+                <img src="~/images/ActualisationLogo.png" style="height:30px" />
+                <br />
+                <strong>
+                    Forgot Password
+
+                </strong></>
+            </div>
+            <div class="email_check_password_link">
+                <div class="alert alert-danger alert-dismissible fade show"  id="valid">Please check your email for the reset password link.</div>
+            </div>
+            <div class="email_check_password_link_error">
+                <div class="alert alert-danger alert-dismissible fade show" id="invalid">Please check your email for the reset password link</div>
+            </div>
+            <form id="resetPasswordForm" action="/Account/Login" method="post">
+
+                <div class="input-group">
+                    <br />
+                    <input type="email" id="email" name="email" placeholder="Email" value="@Model.email" required>
+                </div>
+
+                <br />
+                <button type="button" id="resetPasswordBtn" class="btn btn-primary">Reset</button>
+            </form>
+            <br />
+            <span><a href="/Account/login">Sign In?</a></span>
+            
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#resetPasswordBtn").click(function () {
+                // Perform AJAX call
+                $.ajax({
+                    url: "/Account/sendForgotPasswordEmail",
+                    type: "POST",
+                    data: $("#resetPasswordForm").serialize(),
+                    beforeSend: function () {
+                        $('#resetPasswordBtn').prop("disabled", true);
+                        $('#resetPasswordBtn').css("cursor", "not-allowed");
+                        $('.email_check_password_link').css('display', 'none');
+                        $('#invalid').text("");
+                        $('.email_check_password_link_error').css('display', 'none');
+                    },
+                    success: function (data) {
+                        // Display SweetAlert on success within a specific container
+                        $('.email_check_password_link').css('display', 'block');
+                        // Hide the reset password button
+                    },
+                    complete: function () {
+                        $('#resetPasswordBtn').prop("disabled", false);
+                        $('#resetPasswordBtn').css("cursor", "pointer");
+                    },
+                    error: function (error) {
+                        // Handle error
+                        // responseJSON
+                        $('#invalid').text(error.responseJSON.error);
+                        $('.email_check_password_link_error').css('display', 'block');
+                    }
+                });
+            });
+        });
+    </script>
+}
+

@@ -1,0 +1,7 @@
+﻿.profilePicUpload {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

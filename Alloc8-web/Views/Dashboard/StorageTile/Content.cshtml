@@ -1,0 +1,85 @@
+﻿@model Alloc8_web.Utilities.Tile
+<div id="storage_container">
+    <div id="sun_payment" class="apex-charts"></div>
+
+</div>
+<script>
+    let options = {
+        chart: {
+            height: 300,
+            type: 'donut',
+        },
+        series: [],
+        stroke: {
+            colors: undefined,
+        },
+        plotOptions: {
+            
+            
+        },
+        legend: {
+            show: true,
+            position: 'bottom',
+            horizontalAlign: 'center',
+            verticalAlign: 'middle',
+            floating: false,
+            fontSize: '14px',
+            offsetX: 0,
+            offsetY: -13
+        },
+        labels: [],
+        colors: ["#00dd9f", "#4d5276"],
+        responsive: [{
+            breakpoint: 600,
+            options: {
+                chart: {
+                    height: 240
+                },
+                legend: {
+                    show: true
+                },
+            }
+        }],
+        tooltip: {
+            enabled: true,
+            y: {
+                formatter: function (val) {
+                    return val + ' KB'; 
+                }
+            }
+        }
+
+    }
+ 
+    $(document).ready(function(){
+        $.ajax({
+            url: "/Dashboard/getStorageData?organisation=@Model.organisation",
+            type: "GET",
+            dataType: "json",
+            beforeSend: function () {
+                loader.add($("#storage_container"))
+            },
+            success: function (data) {
+                // Update the result div with the received data
+                options.labels = ['Used space','Total Space'];
+                options.series = [432,1150];
+                var chart = new ApexCharts(
+                    document.querySelector("#sun_payment"),
+                    options
+                );
+                chart.render();
+            },
+            error: function (error) {
+                loader.remove($("#storage_container"))
+                console.error("Error occurred: " + error.statusText);
+            },
+            complete: function () {
+                loader.remove($("#storage_container"))
+            }
+        });
+        console.log("tile loaded")
+        
+        
+    });
+    
+</script>

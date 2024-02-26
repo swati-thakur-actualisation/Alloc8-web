@@ -1,0 +1,256 @@
+﻿@{
+    ViewBag.Title = "Add User";
+    Layout = "~/views/shared/_Modal.cshtml";
+    ViewData["Title"] = "Add User";
+}
+@model List<Alloc8_web.Utilities.Tile>
+<style>
+    .avatar-box {
+        position: relative;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Adjust the background color and opacity as needed */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .avatar-box:hover .overlay {
+        opacity: 1;
+    }
+
+    .container {
+        max-width: 500px; /* Set the maximum width of the container */
+        margin: auto; /* Center the container */
+    }
+
+    .list-container {
+        max-height: 500px; /* Maximum container height */
+        overflow-y: auto; /* Enable vertical scrolling */
+        padding: 0;
+        margin-top: 20px; /* Spacing at the top */
+    }
+
+    .list-view {
+        list-style-type: none; /* Removes default list style */
+        padding-left: 0; /* Removes default padding */
+        margin: 0; /* Removes default margin */
+    }
+
+    .list-item {
+        display: flex; /* Aligns children elements in a row */
+        align-items: center; /* Centers items vertically */
+        margin-bottom: 15px; /* Space between list items */
+        border-radius: 8px; /* Rounded corners */
+        padding: 10px; /* Padding inside each list item */
+    }
+
+    .profile-image-container {
+        margin-right: 10px; /* Space between the profile image and the input */
+    }
+
+    .avatar-box {
+        position: relative; /* For overlay positioning */
+        width: 60px; /* Adjusted width */
+        height: 60px; /* Adjusted height */
+        border-radius: 50%; /* Makes the container circular */
+        background-color: grey; /* Placeholder background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px; /* Spacing between the profile image and the input */
+    }
+
+    .avatar-title,
+    .overlay {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%; /* Ensures the avatar and overlay are circular */
+    }
+
+    .profile-pic:hover .overlay {
+        opacity: 1; /* Shows the overlay on hover */
+    }
+
+    .organisation-details {
+        flex-grow: 1; /* Allows the organisation details to take up remaining space */
+    }
+
+</style>
+<div class="container-fluid">
+    <div class="col-12">
+        <div class="col-12">
+            <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="general_settings_tab" data-toggle="pill" href="#general_settings" aria-selected="true">General</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="OrgProject_tab" data-toggle="pill" href="#OrgProject" aria-selected="false">Projects</a>
+                </li>
+            </ul>
+        </div>
+        <form action="/Organisation/Create" method="POST" class="needs-validation" id="userCreateForm" novalidate>
+            <div class="tab-content chat-list slimscroll" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="general_settings">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationCustom01">Organisation Name</label>
+                            <input type="text" class="form-control" name="organisationName" id="organisationName" placeholder="Organisation Name" required>
+
+                        </div><!--end col-->
+
+
+                    </div><!--end form-row-->
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01"> Color</label>
+                            <input type="color" class="form-control" name="color" value="#e83030" id="color" placeholder="Font Color" required>
+
+                        </div>
+
+
+                        <div class="col-md-6 mb-3">
+                            <label>Select Dashboard Tile</label>
+                            <button type="button" class="form-control d-flex justify-content-between align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="mdi mdi-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu" style="max-height: 300px; overflow-y: auto;">
+                                <input type="text" class="form-control dropdown-search" placeholder="Search...">
+                                @if (Model != null && Model.Count() > 0)
+                                {
+                                    @foreach (var tile in Model)
+                                    {
+                                        <label class="dropdown-item">
+                                            <input type="checkbox" class="dropdown-checkbox" name="tiles" value="@tile.name" /><span>  @tile.title</span>
+                                        </label>
+                                        if (tile.subTiles != null && tile.subTiles.Count() > 0)
+                                        {
+                                            foreach (var subtile in tile.subTiles)
+                                            {
+                                                <label class="dropdown-item">
+                                                    <input type="checkbox" class="dropdown-checkbox" name="tiles" value="@subtile.name" /><span>  @subtile.title</span>
+                                                </label>
+                                            }
+                                        }
+                                    }
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="OrgProject">
+                    <div class="container mt-5" style="overflow-y: auto;height:200px">
+                        <div class="row justify-content-center">
+                            <div class="col-10">
+                                <ul class="list-view">
+
+                                    <li class="list-item">
+                                        <div id="profile-image-container">
+                                            <div id="profile_pic">
+                                                <div class="avatar-box align-self-center profilePicUpload" for="imageInput">
+                                                    <span style="font-size:50px"></span>
+                                                    <div class="overlay rounded-circle">
+                                                        <i class="fas fa-camera" style="font-size:20px;color:white"></i>
+                                                    </div>
+                                                </div>
+                                                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                                            </div>
+                                            <input type="hidden" id="logoImageUrl" name="organisationProjectViewModel[0].logoImage" value="">
+                                        </div>
+                                        <div class="organisation-details">
+                                            <input type="text" class="form-control" name="organisationProjectViewModel[0].projectName" id="projectName" placeholder="Project Name" required>
+                                        </div>
+                                        <button id="addListItemButton" type="button" class="btn btn-primary">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function () {
+        $('.list-view').delegate(".profilePicUpload", "click", function () {
+            $(this).closest('.list-item').find('#imageInput').click();
+        });
+
+        $('.list-view').delegate('#imageInput', 'change', function (e) {
+            var fileInput = $(this);
+            var file = fileInput[0].files[0];
+            if (file) {
+                var formData = new FormData();
+                formData.append('logoImage', file);
+                $.ajax({
+                    url: '/Organisation/uploadProjectLogo',
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        loader.add(fileInput.closest('.list-item').find('#profile-image-container'));
+
+                    },
+                    success: function (data) {
+                        fileInput.closest('.list-item').find('#logoImageUrl').val(data.profileImageUrl);
+                        fileInput.closest('.list-item').find('.avatar-box').css('background-image', `url(${data.profileImageUrl})`);
+                    },
+                    complete: function () {
+                        loader.remove(fileInput.closest('.list-item').find("#profile-image-container"));
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error uploading image:', status, error);
+                    }
+                });
+            }
+        });
+
+        $('.container-fluid').delegate('#addListItemButton', 'click', function () {
+            var index = $('.list-view .list-item').length;
+            var newItemHtml = `
+                    <li class="list-item">
+                                                    <div  id="profile-image-container">
+
+                                                    <div id="profile_pic">
+                                                        <div class="avatar-box align-self-center profilePicUpload" for="imageInput">
+                                                            <span class="avatar-title bg-danger rounded-circle img-thumbnail"></span>
+                                                            <div class="overlay rounded-circle">
+                                                                <i class="fas fa-camera" style="font-size:20px;color:white"></i>
+                                                            </div>
+                                                        </div>
+                                                        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                                                    </div>
+                                                            <input type="hidden" id="logoImageUrl" name="organisationProjectViewModel[${index}].logoImage" value="">
+                                                    </div>
+                                        <div class="organisation-details">
+                                                            <input type="text" class="form-control" name="organisationProjectViewModel[${index}].projectName" id="projectName" placeholder="Project Name" required>
+                                        </div>
+                                                    <button id="addListItemButton" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-plus"></i>
+                                                    </button>
+                                    </li>`;
+
+            $('.list-view').append(newItemHtml);
+        });
+
+
+
+        $('.container-fluid').delegate('#removeListItemButton', 'click', function () {
+            $(this).closest('li.list-item').remove();
+        });
+    });
+</script>

@@ -1,0 +1,137 @@
+{
+  "value": [
+    {
+      "id": "/subscriptions/127d751f-b18c-40ed-8aef-e839782df01b/resourceGroups/actulisation-shared/providers/Microsoft.Web/sites/actualisation-dashboard/webjobs/ADJiraConnector",
+      "name": "actualisation-dashboard/Alloc8",
+      "type": "Microsoft.Web/sites/webjobs",
+      "location": "Australia East",
+      "properties": {
+        "status": "Running",
+        "detailed_status": "051fa6 - Running\r\n",
+        "log_url": "https://actualisation-dashboard.scm.azurewebsites.net/vfs/data/jobs/continuous/ADJiraConnector/job_log.txt",
+        "name": "Alloc8",
+        "run_command": "run.cmd",
+        "url": "https://actualisation-dashboard.scm.azurewebsites.net/api/continuouswebjobs/ADJiraConnector",
+        "extra_info_url": "https://actualisation-dashboard.scm.azurewebsites.net/azurejobs/#/jobs/continuous/ADJiraConnector",
+        "type": "continuous",
+        "error": null,
+        "using_sdk": false,
+        "settings": {}
+      }
+    },
+    {
+      "id": "/subscriptions/127d751f-b18c-40ed-8aef-e839782df01b/resourceGroups/actulisation-shared/providers/Microsoft.Web/sites/actualisation-dashboard/webjobs/AhFencing-GDriveConnector",
+      "name": "actualisation-dashboard/Skedulo",
+      "type": "Microsoft.Web/sites/webjobs",
+      "location": "Australia East",
+      "properties": {
+        "status": "Running",
+        "detailed_status": "051fa6 - Running\r\n",
+        "log_url": "https://actualisation-dashboard.scm.azurewebsites.net/vfs/data/jobs/continuous/AhFencing-GDriveConnector/job_log.txt",
+        "name": "Skedulo",
+        "run_command": "run.cmd",
+        "url": "https://actualisation-dashboard.scm.azurewebsites.net/api/continuouswebjobs/AhFencing-GDriveConnector",
+        "extra_info_url": "https://actualisation-dashboard.scm.azurewebsites.net/azurejobs/#/jobs/continuous/AhFencing-GDriveConnector",
+        "type": "continuous",
+        "error": null,
+        "using_sdk": false,
+        "settings": {}
+      }
+    },
+    {
+      "id": "/subscriptions/127d751f-b18c-40ed-8aef-e839782df01b/resourceGroups/actulisation-shared/providers/Microsoft.Web/sites/actualisation-dashboard/webjobs/AhFencing-SimproConnector",
+      "name": "actualisation-dashboard/Assignar",
+      "type": "Microsoft.Web/sites/webjobs",
+      "location": "Australia East",
+      "properties": {
+        "status": "Running",
+        "detailed_status": "051fa6 - Running\r\n",
+        "log_url": "https://actualisation-dashboard.scm.azurewebsites.net/vfs/data/jobs/continuous/AhFencing-SimproConnector/job_log.txt",
+        "name": "Assignar",
+        "run_command": "run.cmd",
+        "url": "https://actualisation-dashboard.scm.azurewebsites.net/api/continuouswebjobs/AhFencing-SimproConnector",
+        "extra_info_url": "https://actualisation-dashboard.scm.azurewebsites.net/azurejobs/#/jobs/continuous/AhFencing-SimproConnector",
+        "type": "continuous",
+        "error": null,
+        "using_sdk": false,
+        "settings": {}
+      }
+    },
+    {
+      "id": "/subscriptions/127d751f-b18c-40ed-8aef-e839782df01b/resourceGroups/actulisation-shared/providers/Microsoft.Web/sites/actualisation-dashboard/webjobs/AhFencing-XeroConnector",
+      "name": "actualisation-dashboard/Xero",
+      "type": "Microsoft.Web/sites/webjobs",
+      "location": "Australia East",
+      "properties": {
+        "status": "Running",
+        "detailed_status": "051fa6 - Running\r\n",
+        "log_url": "https://actualisation-dashboard.scm.azurewebsites.net/vfs/data/jobs/continuous/AhFencing-XeroConnector/job_log.txt",
+        "name": "Xero",
+        "run_command": "run.cmd",
+        "url": "https://actualisation-dashboard.scm.azurewebsites.net/api/continuouswebjobs/AhFencing-XeroConnector",
+        "extra_info_url": "https://actualisation-dashboard.scm.azurewebsites.net/azurejobs/#/jobs/continuous/AhFencing-XeroConnector",
+        "type": "continuous",
+        "error": null,
+        "using_sdk": false,
+        "settings": {}
+      }
+    },
+    {
+      "id": "/subscriptions/127d751f-b18c-40ed-8aef-e839782df01b/resourceGroups/actulisation-shared/providers/Microsoft.Web/sites/actualisation-dashboard/webjobs/Alloc8-AltusScheduler",
+      "name": "actualisation-dashboard/Hubspot",
+      "type": "Microsoft.Web/sites/webjobs",
+      "location": "Australia East",
+      "properties": {
+        "status": "Running",
+        "detailed_status": "051fa6 - Running\r\n",
+        "log_url": "https://actualisation-dashboard.scm.azurewebsites.net/vfs/data/jobs/continuous/Alloc8-AltusScheduler/job_log.txt",
+        "name": "Hubspot",
+        "run_command": "run.cmd",
+        "url": "https://actualisation-dashboard.scm.azurewebsites.net/api/continuouswebjobs/Alloc8-AltusScheduler",
+        "extra_info_url": "https://actualisation-dashboard.scm.azurewebsites.net/azurejobs/#/jobs/continuous/Alloc8-AltusScheduler",
+        "type": "continuous",
+        "error": null,
+        "using_sdk": false,
+        "settings": {}
+      }
+    },
+    {
+      "id": "/subscriptions/127d751f-b18c-40ed-8aef-e839782df01b/resourceGroups/actulisation-shared/providers/Microsoft.Web/sites/actualisation-dashboard/webjobs/Alloc8-PredictiveEngine",
+      "name": "actualisation-dashboard/Gsuite",
+      "type": "Microsoft.Web/sites/webjobs",
+      "location": "Australia East",
+      "properties": {
+        "status": "Running",
+        "detailed_status": "051fa6 - Running\r\n",
+        "log_url": "https://actualisation-dashboard.scm.azurewebsites.net/vfs/data/jobs/continuous/Alloc8-PredictiveEngine/job_log.txt",
+        "name": "Gsuite",
+        "run_command": "run.cmd",
+        "url": "https://actualisation-dashboard.scm.azurewebsites.net/api/continuouswebjobs/Alloc8-PredictiveEngine",
+        "extra_info_url": "https://actualisation-dashboard.scm.azurewebsites.net/azurejobs/#/jobs/continuous/Alloc8-PredictiveEngine",
+        "type": "continuous",
+        "error": null,
+        "using_sdk": false,
+        "settings": {}
+      }
+    },
+    {
+      "id": "/subscriptions/127d751f-b18c-40ed-8aef-e839782df01b/resourceGroups/actulisation-shared/providers/Microsoft.Web/sites/actualisation-dashboard/webjobs/BB-ICalConnector",
+      "name": "actualisation-dashboard/Microsoft 365",
+      "type": "Microsoft.Web/sites/webjobs",
+      "location": "Australia East",
+      "properties": {
+        "status": "Running",
+        "detailed_status": "051fa6 - Running\r\n",
+        "log_url": "https://actualisation-dashboard.scm.azurewebsites.net/vfs/data/jobs/continuous/BB-ICalConnector/job_log.txt",
+        "name": "Microsoft 365",
+        "run_command": "run.cmd",
+        "url": "https://actualisation-dashboard.scm.azurewebsites.net/api/continuouswebjobs/BB-ICalConnector",
+        "extra_info_url": "https://actualisation-dashboard.scm.azurewebsites.net/azurejobs/#/jobs/continuous/BB-ICalConnector",
+        "type": "continuous",
+        "error": null,
+        "using_sdk": false,
+        "settings": {}
+      }
+    }
+  ]
+}

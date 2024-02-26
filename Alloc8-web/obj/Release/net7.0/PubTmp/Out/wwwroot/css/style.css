@@ -1,0 +1,218 @@
+﻿body,
+html {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+   
+    width: 100%;
+    height: 100%;
+}
+.login-page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.login-form h2 {
+    font-family: 'Poppins', sans-serif;
+    font-variant: small-caps;
+    font-size: 40px;
+    margin-top: -20px;
+}
+
+.logo-container {
+    background-image: url('../images/bck.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    height: 100%;
+}
+
+.logo-container .logo {
+    height: 100px;
+}
+
+
+.buton:disabled{
+    cursor:not-allowed !important;
+}
+.btn {
+    padding: 4px 0px;
+    font-family: 'Poppins', sans-serif;
+    min-width: 100px;
+    display:inline-block;
+    border: none;
+    font-weight: 500;
+    font-size:12px;
+    border-radius: 20px;
+    box-shadow: 1px 2px 4px 4px rgba(0,0,0,0.12);
+}
+
+.btn-primary {
+    background-color: black;
+    color: white;
+}
+.validation-summary-errors ul {
+
+    list-style-type: none;
+    margin: 0;
+    color: #ff2400;
+    padding: 0;
+    margin-top:10px;
+}
+.success-msg {
+    padding: 10px 10px 10px 10px;
+    color: green;
+    display: none;
+}
+
+.error-msg {
+    padding: 10px 10px 10px 10px;
+    color: #ff2400;
+    display: none;
+}
+.checkbox{
+    display:flex;
+    align-items:center;
+    text-align:left;
+    font-size:11px;
+
+}
+.login-container {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login-form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255);
+    box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
+}
+input::placeholder {
+    color: #888787;
+}
+.input-group input {
+    position:relative;
+    border: none;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    outline: none;
+    width: 250px;
+    color:black;
+    padding: 5px 10px;
+    font-size: 12px;
+    display: flex;
+    font-weight:500;
+    flex-direction: row;
+}
+.login-form .logo{
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    font-weight:500;
+    font-size:16px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.input-group {
+    text-align: left;
+}
+
+    .input-group span {
+        font-weight: 300;
+        font-size: 14px;
+    }
+a {
+    font-size: 11px;
+    color: #6e95c3;
+}
+.forgot-signup {
+    margin-top: 20px;
+}
+
+    .forgot-signup a {
+        text-decoration: none;
+        font-weight: 100;
+        font-size: 12px;
+    }
+        .forgot-signup a:hover {
+            text-decoration: underline;
+        }
+
+@media (max-width: 1170px) {
+    .logo-container {
+        width: 60%;
+    }
+
+    .login-container {
+        width: 40%;
+    }
+
+    .logo-container .logo {
+        height: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .login-container {
+        width: 100%;
+        height: 100%;
+    }
+/*
+    .logo-container::before {
+        position: absolute;
+        content: '';
+        top: 30%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1));
+    }
+    .logo-container::before {
+        position: absolute;
+        content: '';
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5),rgba(255, 255, 255, 1));
+    }*/
+
+    .logo-container {
+        display:none
+    }
+
+        .logo-container .logo {
+            height: 60px;
+        }
+}

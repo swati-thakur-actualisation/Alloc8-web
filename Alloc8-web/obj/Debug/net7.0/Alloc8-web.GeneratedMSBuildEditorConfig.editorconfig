@@ -1,0 +1,389 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Alloc8_web
+build_property.RootNamespace = Alloc8_web
+build_property.ProjectDir = D:\Alloc\Alloc8-web\Alloc8-web\Alloc8-web\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Alloc\Alloc8-web\Alloc8-web\Alloc8-web
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Account/cantSignIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxjYW50U2lnbkluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Account/changePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxjaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/activeTile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXGFjdGl2ZVRpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/AnomalyDetection/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEFub21hbHlEZXRlY3Rpb25cQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/AnomalyDetection/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEFub21hbHlEZXRlY3Rpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/AutomatedCoaching/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEF1dG9tYXRlZENvYWNoaW5nXENvbnRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/AutomatedCoaching/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEF1dG9tYXRlZENvYWNoaW5nXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/AutomatedQuoting/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEF1dG9tYXRlZFF1b3RpbmdcQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/AutomatedQuoting/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEF1dG9tYXRlZFF1b3RpbmdcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/AutomatedScheduling/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEF1dG9tYXRlZFNjaGVkdWxpbmdcQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/AutomatedScheduling/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEF1dG9tYXRlZFNjaGVkdWxpbmdcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/CancellationPrediction/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXENhbmNlbGxhdGlvblByZWRpY3Rpb25cQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/CancellationPrediction/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXENhbmNlbGxhdGlvblByZWRpY3Rpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/CoachingComplientsStatusTile/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXENvYWNoaW5nQ29tcGxpZW50c1N0YXR1c1RpbGVcQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/CoachingComplientsStatusTile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXENvYWNoaW5nQ29tcGxpZW50c1N0YXR1c1RpbGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/CoachingTile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXENvYWNoaW5nVGlsZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/CustomAutomation/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEN1c3RvbUF1dG9tYXRpb25cQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/CustomAutomation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEN1c3RvbUF1dG9tYXRpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/CustomChatbot/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEN1c3RvbUNoYXRib3RcQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/CustomChatbot/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEN1c3RvbUNoYXRib3RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/DataLogsTile/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXERhdGFMb2dzVGlsZVxDb250ZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/DataLogsTile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXERhdGFMb2dzVGlsZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/ExceptionsTile/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEV4Y2VwdGlvbnNUaWxlXENvbnRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/ExceptionsTile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEV4Y2VwdGlvbnNUaWxlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/GuidedFreightProcurement/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEd1aWRlZEZyZWlnaHRQcm9jdXJlbWVudFxDb250ZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/GuidedFreightProcurement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEd1aWRlZEZyZWlnaHRQcm9jdXJlbWVudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/LeadCapture/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXExlYWRDYXB0dXJlXENvbnRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/LeadCapture/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXExlYWRDYXB0dXJlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/RecentLoginsTile/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFJlY2VudExvZ2luc1RpbGVcQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/RecentLoginsTile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFJlY2VudExvZ2luc1RpbGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/RevenuePredictionsPerMonthsTile/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFJldmVudWVQcmVkaWN0aW9uc1Blck1vbnRoc1RpbGVcQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/RevenuePredictionsPerMonthsTile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFJldmVudWVQcmVkaWN0aW9uc1Blck1vbnRoc1RpbGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/ServiceLogsModel/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFNlcnZpY2VMb2dzTW9kZWxcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/ServicesTile/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFNlcnZpY2VzVGlsZVxDb250ZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/ServicesTile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFNlcnZpY2VzVGlsZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/StorageTile/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFN0b3JhZ2VUaWxlXENvbnRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/StorageTile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFN0b3JhZ2VUaWxlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/TableMetricsTile/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFRhYmxlTWV0cmljc1RpbGVcQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/TableMetricsTile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFRhYmxlTWV0cmljc1RpbGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/TraffioPredictionsTile/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFRyYWZmaW9QcmVkaWN0aW9uc1RpbGVcQ29udGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/TraffioPredictionsTile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFRyYWZmaW9QcmVkaWN0aW9uc1RpbGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/TravelTimeSavedAndExpensesTile/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFRyYXZlbFRpbWVTYXZlZEFuZEV4cGVuc2VzVGlsZVxDb250ZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/TravelTimeSavedAndExpensesTile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFRyYXZlbFRpbWVTYXZlZEFuZEV4cGVuc2VzVGlsZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/UpcomingOrdersTile/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFVwY29taW5nT3JkZXJzVGlsZVxDb250ZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/UpcomingOrdersTile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFVwY29taW5nT3JkZXJzVGlsZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/Upgrades/Content.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFVwZ3JhZGVzXENvbnRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/Upgrades/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFVwZ3JhZGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Dashboard/upgradeTile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXHVwZ3JhZGVUaWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/EmailTemplate/create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1haWxUZW1wbGF0ZVxjcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/EmailTemplate/edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1haWxUZW1wbGF0ZVxlZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/EmailTemplate/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1haWxUZW1wbGF0ZVxpbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/EmailTemplate/table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1haWxUZW1wbGF0ZVx0YWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Home/getNotificationDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxnZXROb3RpZmljYXRpb25EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Home/notificationsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxub3RpZmljYXRpb25zVGFiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/LLM/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTExNXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/LLM/Index1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTExNXEluZGV4MS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/LLM/Resource.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTExNXFJlc291cmNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Organisation/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2F0aW9uXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Organisation/DoDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2F0aW9uXERvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Organisation/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2F0aW9uXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Organisation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2F0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Organisation/OrgnaisationTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2F0aW9uXE9yZ25haXNhdGlvblRhYmxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Shared/_ConsoleModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db25zb2xlTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Shared/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Shared/_LeftSidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MZWZ0U2lkZWJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Shared/_Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Shared/_Modal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Nb2RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Shared/_NotificationModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25Nb2RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Shared/_TopBottomContent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ub3BCb3R0b21Db250ZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/TestingLLM/Viewfile1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGluZ0xMTVxWaWV3ZmlsZTEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/TestingLLM/Viewfile2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGluZ0xMTVxWaWV3ZmlsZTIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/TestingLLM/Viewfile3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGluZ0xMTVxWaWV3ZmlsZTMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/TestingLLM/Viewfile4.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGluZ0xMTVxWaWV3ZmlsZTQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/TestingLLM/Viewfile5.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGluZ0xMTVxWaWV3ZmlsZTUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/TestingLLM/Viewfile6.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGluZ0xMTVxWaWV3ZmlsZTYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/TestingLLM/Viewfile7.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGluZ0xMTVxWaWV3ZmlsZTcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/User/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/User/DoDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEb0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/User/DoLoginAs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEb0xvZ2luQXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/User/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/User/GetUsersTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxHZXRVc2Vyc1RhYmxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/User/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alloc/Alloc8-web/Alloc8-web/Alloc8-web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-8vaaib47yu

@@ -1,0 +1,439 @@
+﻿<div class="main_container" style="height:550px; overflow-y:auto;">
+    <div class="sidebar" id='toggleButton'>
+        <div class="new_chat" id="chat_btn" style="border:1px solid; border-radius:5px;">
+            <button class="chat_btn" style="border: none;" disabled>+ New Chat</button>
+            <button class="collaps_btn" style="border: none;">
+                <i class="fas fa-edit"></i>
+            </button>
+
+        </div>
+
+        <div class="history_chats">
+            <div class="saved-chats">
+                @foreach (var chatHistory in Model)
+                {
+                   @*  <div class="old-history-button">
+                        <button class="history-chat-button" value="@chatHistory.ChatSessionId"> <i id="message-icon" class="fa-regular fa-message "></i><h4 class="first-three-words">@chatHistory.LastUserPrompt</h4></button>
+                        <button class="fa-solid fa-trash-can deleteHistory" value="@chatHistory.ChatSessionId"></button>
+                    </div> *@
+                 
+
+                    <div class="old-history-button" style="display: flex; align-items: center;">
+                        <span style="flex-grow: 1; display: flex; align-items: center;">
+                            <button class="history-chat-button" value="@chatHistory.chatSessionId" style="white-space: nowrap; text-align: left; padding-left: 10px; display: flex; align-items: center; flex-grow: 1;">
+                                <i id="message-icon" class="fas fa-comment-alt" style="margin-right: 3px;"></i>
+                                <span class="ml-4" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px;">@chatHistory.lastUserPrompt</span>
+                            </button>
+                            <span class="fa fa-trash deleteHistory" value="@chatHistory.chatSessionId" style="padding-left: 10px;"></span>
+                        </span>
+                    </div>
+
+                }
+            </div>
+        </div>
+
+       @*  <div class="logout_section">
+            <img src="/Images/1.jpg" alt="user_image">
+            <h4>Ah fencing</h4>
+            <h4>...</h4>
+        </div> *@
+        <button onclick=updateButtonState() class="close_btn"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="content_section">
+        <div class="menu_icon">
+            <button class="mobile-nav-bar">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <div class="chat-container" style="height:500px; overflow-y:auto;">
+        </div>
+
+        <div class="typing-container">
+            <div class="typing-content">
+                <div id="suggestions-container">
+
+                    <!-- Suggestions will be displayed here -->
+                </div>
+                <div class="typing-textarea">
+                    <textarea id="chat-input" placeholder="Enter a Prompt Here " disabled></textarea>
+                    <span id="send-btn" class="material-icons">send</span>
+                    <input type="hidden" value="new" id="chatId" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            const chatInput = $("#chat-input");
+            const sendButton = $("#send-btn");
+            const chatContainer = $(".chat-container");
+            let userText = null;
+            const API_KEY = " ";
+
+            // Lovepreet Code Latest
+            $('#chat-input').on('keyup', function () {
+
+                var userInput = $(this).val();
+
+                $.ajax({
+                    url: '/LLM/GetSuggestions',
+                    method: 'GET',
+                    data: { userInput: userInput },
+                    success: function (suggestions) {
+
+                        displaySuggestions(suggestions);
+                    },
+                    error: function (error) {
+
+                    }
+                });
+            });
+
+            function displaySuggestions(suggestions) {
+
+                $('#suggestions-container').empty();
+
+                for (var i = 0; i < suggestions.length; i++) {
+                    var suggestion = suggestions[i];
+                    var suggestionItem = $('<div class="suggestion-item"><i class="fa fa-search suggestion-icon"></i> ' + "  " + suggestion + '</div>');
+                    suggestionItem.on('click', function () {
+
+                        $('#chat-input').val($(this).text());
+
+                        $('#suggestions-container').empty();
+                    });
+                    $('#suggestions-container').append(suggestionItem);
+                }
+            }
+            //End
+
+            $(".mobile-nav-bar").on("click", function () {
+                updateButtonState();
+            });
+            $(".close_btn").on("click", function () {
+                var x = $("#toggleButton");
+                if (x.hasClass("active")) {
+                    x.removeClass("active");
+                } else {
+                    x.addClass("active");
+                }
+            });
+
+
+            function updateButtonState() {
+                var x = $("#toggleButton");
+                if (x.hasClass("active")) {
+                    x.removeClass("active");
+                } else {
+                    x.addClass("active");
+                }
+            }
+            const createElement = (html, className) => {
+                const chatDiv = $("<div>").addClass("chat " + className).html(html);
+                return chatDiv;
+            }
+
+            const getChatResponse = async (incomingChatDiv) => {
+                var prompt = $("#chat-input").val();
+                var chatId = $("#chatId").val();
+                var currentUrl = window.location.href;
+                $.ajax({
+                    type: "POST",
+                    url: "/LLM/Api",
+                    data: ({
+                        prompt: userText,
+                        chatId: chatId,
+                    }),
+                    success: function (data) {
+
+                        if (data.status == 400) {
+                            var reportUrl = currentUrl + "LLM/Report/" + data.data;
+                            const pElement = $("<p>");
+                            pElement.html("Whoops! Something went wrong... If you want to report, please press report button  <button class='report-button' id='report-button' data-report-id='" + data.data + "' style='color: white; text-decoration: underline; margin-top: 15px; margin-bottom: 10px; padding: 8px 16px; border: 1px solid #ccc; background-color: transparent; text-align: right;'><i class='fas fa-flag'></i> Report</button>");
+
+
+                            incomingChatDiv.find(".typing-animation").remove();
+
+                            incomingChatDiv.find(".chat-details").append(pElement);
+                            $("#chat-input").val('');
+                            $("#chatId").val('old');
+
+                        } else {
+                            const pElement = $("<p>");
+                            // Assuming 'pElement' is a jQuery object representing a <p> element
+                            pElement.html("Your result is ready. Click on the link below to get it:<br><a href='" + data.data + "' target='_blank' style='color: #66bb6a; text-decoration: underline; margin-top: 10px; display: block;'>" + data.data + "</a>");
+                            incomingChatDiv.find(".typing-animation").remove();
+
+                            incomingChatDiv.find(".chat-details").append(pElement);
+                            $("#chat-input").val('');
+                            $("#chatId").val('old');
+                        }
+
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            }
+
+            const newChatButton = $("#chat_btn");
+
+            newChatButton.on("click", function () {
+
+                var url = window.location.href;
+                window.location.href = url;
+            });
+            const showTypingAnimation = () => {
+                const html = `
+                                        <div class="chat-contant">
+                                            <div class="chat-details">
+                                                <img src="/Images/log.jpg" alt="">
+                                                <div class="typing-animation">
+                                                    <div class="typing-dot" style="--delay:0.2s"></div>
+                                                    <div class="typing-dot" style="--delay:0.3s"></div>
+                                                    <div class="typing-dot" style="--delay:0.4s"></div>
+                                                </div>
+                                                </div>
+
+
+                                        </div>`;
+                const incomingChatDiv = createElement(html, "incoming");
+                chatContainer.append(incomingChatDiv);
+                getChatResponse(incomingChatDiv);
+            }
+
+            const handleOutgoingChat = () => {
+                userText = chatInput.val().trim();
+                const html = `
+                                        <div class="chat-content">
+                                            <div class="chat-details">
+                                                <img src="/Images/1.jpg" alt="user_image">
+                                                <p>${userText}</p>
+                                            </div>
+                                        </div>`;
+                const outgoingChatDiv = createElement(html, "outgoing");
+                chatContainer.append(outgoingChatDiv);
+                setTimeout(showTypingAnimation, 500);
+            }
+
+
+            sendButton.on("click", handleOutgoingChat);
+            $(".history-chat-button").on("click", function () {
+                var chatId = $(this).attr("value");
+                var $chatContainer = $('.chat-container');
+                $chatContainer.empty();
+
+                $.ajax({
+                    type: "Get",
+                    url: "/LLM/GetChatHistory",
+                    data: { chatId: chatId },
+                    success: function (data) {
+
+                        data.forEach(function (item) {
+                            if (item.url != null) {
+                                var $newChat = $('<div class="chat outgoing">' +
+                                    '<div class="chat-contant">' +
+                                    '<div class="chat-details">' +
+                                    '<img src="/Images/1.jpg" alt="user_image">' +
+                                    '<p class="user-prompt">' + item.userPrompt + '</p>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>');
+                                $chatContainer.append($newChat);
+                            }
+
+
+                            const typingHtml = `
+                                <div class="chat incoming typing-animation-container">
+                                    <div class="chat-contant">
+                                        <div class="chat-details">
+                                            <img src="/Images/log.jpg" alt="">
+                                            <div class="typing-animation">
+                                                <div class="typing-dot" style="--delay:0.2s"></div>
+                                                <div class="typing-dot" style="--delay:0.3s"></div>
+                                                <div class="typing-dot" style="--delay:0.4s"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+                            $chatContainer.append(typingHtml);
+
+
+                            setTimeout(function () {
+
+                                $('.typing-animation-container').remove();
+
+
+                                var $additionalContent = $('<div class="chat incoming">' +
+                                    '<div class="chat-contant">' +
+                                    '<div class="chat-details">' +
+                                    '<img src="/Images/log.jpg" alt="user_image">' +
+                                    '<p><a href="' + item.url + '" target="_blank" style="color: #66bb6a; text-decoration: underline; margin-top: 10px; display: block;">' + item.url + '</a></p>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>');
+                                $chatContainer.append($additionalContent);
+                            }, 4000);
+                        });
+                    }
+                });
+            });
+
+            $(".first-three-words").each(function () {
+                var fullText = $(this).text();
+                var words = fullText.split(' ');
+                var firstThreeWords = words.slice(0, 3).join(' ');
+                $(this).text(firstThreeWords);
+            });
+
+            $(".deleteHistory").on("click", function () {
+                var chatId = $(this).attr("value");
+                var url = window.location.href;
+                $.ajax({
+                    type: "Post",
+                    url: "/LLM/DeleteChatHistory",
+                    data: ({
+
+                        chatId: chatId,
+                    }),
+                    success: function (data) {
+                        if (data == 1) {
+                            window.location.href = url;
+
+                        }
+
+
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+
+            $(document).on('click', '.report-button', function () {
+                var reportId = $(this).data('report-id');
+                $.ajax({
+                    type: "Post",
+                    url: "/LLM/Report",
+                    data: ({
+
+                        id: reportId
+                    }),
+                    success: function (data) {
+
+                        GetCallHistoryAfterReportSumbit(data.id);
+                    },
+
+                });
+
+
+            });
+
+            function GetCallHistoryAfterReportSumbit(id) {
+                var chatId = id;
+                $.ajax({
+                    type: "Get",
+                    url: "/LLM/GetChatHistory",
+                    data: ({
+
+                        chatId: chatId,
+                    }),
+                    success: function (data) {
+
+                        var $chatContainer = $('.chat-container');
+                        $chatContainer.empty();
+                        data.forEach(function (item) {
+                            if (item.url != null) {
+                                var $newChat = $('<div class="chat outgoing">' +
+                                    '   <div class="chat-contant">' +
+                                    '       <div class="chat-details">' +
+                                    '           <img src="/Images/1.jpg" alt="user_image">' +
+                                    '           <p class="user-prompt">' + item.userPrompt + '</p>' +
+                                    '       </div>' +
+                                    '   </div>' +
+                                    '</div>' +
+                                    '<div class="chat incoming">' +
+                                    '   <div class="chat-contant">' +
+                                    '       <div class="chat-details">' +
+                                    '           <img src="/Images/log.jpg" alt="user_image" >' +
+                                    ' <p><a href=' + item.url + ' target = "_blank" style = "color: #66bb6a; text-decoration: underline; margin-top: 10px; display: block;" >' + item.url + '</a></p>'
+
+                                    +
+                                    '       </div>' +
+                                    '   </div>' +
+                                    '</div>'
+
+                                );
+                            }
+                            else if (item.isReported == 1) {
+
+                                var $newChat = $('<div class="chat outgoing">' +
+                                    '   <div class="chat-contant">' +
+                                    '       <div class="chat-details">' +
+                                    '           <img src="/Images/1.jpg" alt="user_image">' +
+                                    '           <p class="user-prompt">' + " " + item.userPrompt + '</p>' +
+                                    '       </div>' +
+                                    '   </div>' +
+                                    '</div>' +
+                                    '<div class="chat incoming">' +
+                                    '   <div class="chat-contant">' +
+                                    '       <div class="chat-details">' +
+                                    '           <img src="/Images/log.jpg" alt="user_image">' +
+                                    '           <p class="user-prompt"> This issue has been reported, Our team will soon update on this .</p>' +
+                                    '       </div>' +
+                                    '   </div>' +
+                                    '</div>'
+
+                                );
+
+
+                            }
+                            else {
+                                var $newChat = $('<div class="chat outgoing">' +
+                                    '   <div class="chat-contant">' +
+                                    '       <div class="chat-details">' +
+                                    '           <img src="/Images/1.jpg" alt="user_image">' +
+                                    '           <p class="user-prompt">' + " " + item.userPrompt + '</p>' +
+                                    '       </div>' +
+                                    '   </div>' +
+                                    '</div>' +
+                                    '<div class="chat incoming">' +
+                                    '   <div class="chat-contant">' +
+                                    '       <div class="chat-details">' +
+                                    '           <img src="/Images/log.jpg" alt="user_image">' +
+                                    '           <p class="user-prompt"> Sorry !We can not assist you with this</p>' +
+                                    '       </div>' +
+                                    '   </div>' +
+                                    '</div>'
+
+                                );
+
+                            }
+
+
+                            $chatContainer.append($newChat);
+
+
+                            $newChat.show();
+
+
+                        });
+                        $("#chatId").val(chatId);
+
+                    },
+                    error: function (error) {
+
+                    }
+                });
+
+
+            }
+
+            
+        });
+    </script>
+}

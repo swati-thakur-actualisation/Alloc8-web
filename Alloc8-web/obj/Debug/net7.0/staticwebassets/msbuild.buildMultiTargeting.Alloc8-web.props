@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Alloc8-web.props" />
+</Project>
